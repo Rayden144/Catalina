@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="description" content="Un espacio para reconocer tus emociones y encontrar una pequeña pausa.">
+  <title>Catalina · Un momento para ti</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="./" aria-label="Catalina, inicio"><span class="brand-mark" aria-hidden="true">✳︎</span> catalina<span class="brand-dot">.</span></a><span class="header-note">TU ESPACIO DE BIENESTAR</span><button class="text-button" id="about-button">Acerca de este espacio <span aria-hidden="true">↗</span></button></header>
+  <main>
+    <section class="intro" aria-labelledby="main-title"><div class="eyebrow"><span></span> HAZ UNA PAUSA. ESTÁS AQUÍ.</div><h1 id="main-title">¿Cómo te sientes<br><em>en este momento?</em></h1><p>No necesitas tener todas las respuestas. Empieza por reconocer<br class="desktop-break"> lo que sientes y encuentra un pequeño paso para cuidarte.</p><div class="intro-flower" aria-hidden="true">✳︎</div></section>
+    <section aria-labelledby="emotions-title" class="emotions-section"><div class="section-label"><h2 id="emotions-title">ELIGE UNA EMOCIÓN</h2><span>Todas tienen un lugar aquí</span></div><div id="emotion-grid" class="emotion-grid"></div></section>
+    <section class="pause-banner"><div class="pause-icon" aria-hidden="true">◌</div><div><h2>A veces, solo hace falta una pausa.</h2><p>Regálate un minuto para respirar, sin tener que explicar nada.</p></div><button id="breathe-button" class="pill-button">Respiremos juntos <span aria-hidden="true">↗</span></button></section>
+    <footer><p>Hecho para acompañarte, un momento a la vez.</p><button class="text-button" id="help-button">¿Necesitas más apoyo? <span aria-hidden="true">↗</span></button><span class="footer-note">ORIENTACIÓN GENERAL · NO REEMPLAZA EL APOYO PROFESIONAL</span></footer>
+  </main>
+  <dialog id="emotion-dialog" class="content-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span id="dialog-label" class="eyebrow">UN MOMENTO PARA TI</span><button class="close-button" data-close aria-label="Cerrar">×</button></div><div id="dialog-symbol" class="dialog-symbol" aria-hidden="true"></div><h2 id="dialog-title"></h2><p id="dialog-description" class="dialog-description"></p><div id="recommendations"></div><div class="reflection"><label for="reflection-input">Un pequeño espacio para expresarte</label><p>¿Qué necesitas ahora? Puedes escribirlo aquí. No se guarda ni se envía.</p><textarea id="reflection-input" rows="3" placeholder="En este momento necesito…" maxlength="1500"></textarea></div><button class="pill-button dialog-done" data-close>Me llevo este pequeño paso <span aria-hidden="true">✓</span></button><p class="dialog-disclaimer">Sugerencias educativas generales para reconocer emociones y practicar la autorregulación. No son un diagnóstico ni un tratamiento.</p></dialog>
+  <dialog id="breathing-dialog" class="breathing-dialog" aria-labelledby="breathing-title"><div class="dialog-top"><span class="eyebrow">VUELVE AL PRESENTE</span><button class="close-button" data-close aria-label="Cerrar">×</button></div><h2 id="breathing-title">Un respiro, a tu ritmo.</h2><p>Respira suavemente, sin retener el aire ni forzarlo. Si te incomoda o te mareas, detente y vuelve a respirar con normalidad.</p><div class="breathing-orbit" id="breathing-orbit"><div class="breathing-circle"><span id="breathing-phase" role="status" aria-live="polite">Cuando quieras</span></div></div><p id="breathing-progress">Cuatro ciclos para hacer una pausa.</p><button id="breathing-toggle" class="pill-button">Comenzar</button><p class="breathing-alternative">También puedes dejar el ejercicio y observar tres cosas a tu alrededor.</p></dialog>
+  <dialog id="info-dialog" class="content-dialog" aria-labelledby="info-title"><div class="dialog-top"><span class="eyebrow">NO TIENES QUE HACERLO A SOLAS</span><button class="close-button" data-close aria-label="Cerrar">×</button></div><h2 id="info-title"></h2><div id="info-content"></div></dialog>
+</body>
+</html>
