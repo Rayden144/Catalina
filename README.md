@@ -1,4 +1,4 @@
-# Catalina
+# HelpyouRYC
 
 Web interactiva, en español y adaptada a teléfonos, para reconocer emociones y explorar prácticas educativas de autocuidado. Incluye tristeza, estrés, enojo, felicidad y angustia, recomendaciones, una reflexión temporal y un ejercicio de respiración con opción de detenerlo.
 

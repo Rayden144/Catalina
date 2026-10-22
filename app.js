@@ -128,7 +128,7 @@ function showInfo(title, paragraphs) {
   infoDialog.showModal(); infoDialog.scrollTop = 0;
 }
 document.querySelector('#about-button').addEventListener('click', () => showInfo('Un espacio para escucharte.', [
-  ['Catalina ofrece orientación educativa general inspirada en prácticas de reconocimiento emocional, autorregulación y organización del aprendizaje. Puedes elegir una emoción, explorar un paso pequeño o hacer una pausa.'],
+  ['HelpyouRYC ofrece orientación educativa general inspirada en prácticas de reconocimiento emocional, autorregulación y organización del aprendizaje. Puedes elegir una emoción, explorar un paso pequeño o hacer una pausa.'],
   ['No es una evaluación psicopedagógica ni atención psicológica. Las sugerencias no están personalizadas y no sustituyen el acompañamiento profesional. Antes de usarla en una comunidad educativa, conviene revisar el contenido con su equipo de psicopedagogía y salud mental.'],
   ['Tu privacidad: esta versión no usa cuentas, cookies, analítica ni servicios externos. Lo que escribes en el espacio de reflexión no se guarda ni se envía y se borra al cerrar la tarjeta. Como en cualquier sitio, el servidor puede registrar visitas técnicas.'],
   ['Si eres menor de edad y algo te preocupa, busca a una persona adulta de confianza o al equipo de orientación de tu centro educativo.']
