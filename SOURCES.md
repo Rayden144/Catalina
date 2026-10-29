@@ -32,7 +32,7 @@ Se conserva la escala de cuatro frecuencias del cuestionario: Nunca, A veces, Fr
 | Académico | Concentración, motivación, organización del tiempo y disposición al aprendizaje | 3, 11 y 20 |
 | Familiar | Apoyo, expresión de preocupaciones y equilibrio de responsabilidades | 15–16 y 21 |
 
-Los títulos y párrafos visibles son síntesis, no citas literales. Las invitaciones a revisar horarios son adaptaciones funcionales al organizador, identificadas en la interfaz. No añaden una técnica terapéutica ni se atribuyen a una emoción específica.
+Los títulos y párrafos visibles son síntesis, no citas literales. Las invitaciones a revisar horarios son adaptaciones funcionales al organizador, documentadas en este archivo. No añaden una técnica terapéutica ni se atribuyen a una emoción específica.
 
 ## Adaptaciones de interfaz y ausencias
 
