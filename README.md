@@ -8,10 +8,10 @@ Web estática de apoyo psicopedagógico para estudiantes que compatibilizan trab
 - 12 ítems del proyecto: 3 laborales, 3 personales, 3 académicos y 3 familiares.
 - Cuatro frecuencias originales: Nunca, A veces, Frecuentemente y Siempre.
 - Etiqueta emocional opcional, elegida explícitamente por la persona: tristeza, estrés, enojo, alegría, angustia, miedo o preocupación.
-- Gráfico circular interactivo y lista equivalente, utilizables con teclado. Porcentaje = apariciones de una etiqueta / total de etiquetas elegidas × 100. Las omisiones se excluyen; los empates se muestran. Redondeo a un decimal (la suma visible puede variar una décima).
+- Gráfico circular interactivo y lista equivalente, utilizables con teclado. Porcentaje = apariciones de una etiqueta / total de etiquetas elegidas × 100. Las omisiones se excluyen, los empates se muestran. Redondeo a un decimal (la suma visible puede variar una décima).
 - Consulta de los cuatro focos generales de apoyo del documento al elegir una emoción.
 - Organizador por semanas, lunes–domingo, con horas, ámbitos y actividades que pueden añadirse, editarse y eliminarse.
-- Descarga directa de un PDF local, multipágina si es necesario. No se solicita correo ni se envían actividades fuera del dispositivo. El PDF conserva español y signos WinAnsi; emojis y caracteres fuera de esa codificación se sustituyen por `?`.
+- Descarga directa de un PDF local, multipágina si es necesario. No se solicita correo ni se envían actividades fuera del dispositivo. El PDF conserva español y signos WinAnsi, emojis y caracteres fuera de esa codificación se sustituyen por `?`.
 
 ## Base documental y límites
 
@@ -27,11 +27,11 @@ Las respuestas del recorrido quedan únicamente en memoria y se pierden al recar
 
 Las actividades también quedan en memoria por defecto. **Guardar mi organizador en este dispositivo** permite persistirlas en `localStorage` únicamente en ese navegador. Al desmarcar se elimina la copia guardada. En equipos compartidos, no activar esa opción. El alojamiento web puede registrar visitas técnicas.
 
-La exportación crea un archivo en el navegador; el navegador decide dónde descargarlo o muestra su selector. La web no puede escribir arbitrariamente en una carpeta del equipo ni confirmar que la persona haya conservado el archivo.
+La exportación crea un archivo en el navegador, el navegador decide dónde descargarlo o muestra su selector. La web no puede escribir arbitrariamente en una carpeta del equipo ni confirmar que la persona haya conservado el archivo.
 
 ## Desarrollo
 
-Usa el checkout existente: las tareas de nube ya están aisladas; no crees un Git worktree salvo petición expresa.
+Usa el checkout existente: las tareas de nube ya están aisladas, no crees un Git worktree salvo petición expresa.
 
 ```sh
 cd /workspace/Catalina
@@ -40,7 +40,7 @@ python3 -m http.server 8000 --bind 0.0.0.0
 
 Abre `http://localhost:8000` en el equipo que ejecuta el servidor. En Windows se puede usar `py -m http.server 8000 --bind 0.0.0.0`. Detén el servidor con Ctrl+C. Los módulos JavaScript deben servirse por HTTP, no abriendo `index.html` con `file://`.
 
-Desde teléfonos en la misma red, entra a `http://IP-DEL-NOTEBOOK:8000/` usando la IPv4 local del notebook. `localhost` desde el teléfono apunta al teléfono. Algunos Wi-Fi de invitados y puntos de acceso aíslan dispositivos. Mantén el notebook y servidor encendidos y permite el puerto únicamente en redes privadas; no expongas este servidor de prueba a internet.
+Desde teléfonos en la misma red, entra a `http://IP-DEL-NOTEBOOK:8000/` usando la IPv4 local del notebook. `localhost` desde el teléfono apunta al teléfono. Algunos Wi-Fi de invitados y puntos de acceso aíslan dispositivos. Mantén el notebook y servidor encendidos y permite el puerto únicamente en redes privadas, no expongas este servidor de prueba a internet.
 
 ### Apache / XAMPP
 
@@ -48,7 +48,7 @@ Copia los archivos del proyecto a una carpeta de la raíz pública (por ejemplo 
 
 ### GitHub Pages
 
-En `Rayden144/Catalina`: **Settings → Pages → Deploy from a branch → main → / (root) → Save**. El enlace esperado es `https://rayden144.github.io/Catalina/`. Publicar en Pages permite acceso desde cualquier red con internet, sin mantener el notebook encendido. Una actualización de `main` vuelve a desplegar el sitio; espera a que GitHub confirme el despliegue. El repositorio y su ruta siguen llamándose Catalina; la aplicación se llama HelpyouRYC.
+En `Rayden144/Catalina`: **Settings → Pages → Deploy from a branch → main → / (root) → Save**. El enlace esperado es `https://rayden144.github.io/Catalina/`. Publicar en Pages permite acceso desde cualquier red con internet, sin mantener el notebook encendido. Una actualización de `main` vuelve a desplegar el sitio, espera a que GitHub confirme el despliegue. El repositorio y su ruta siguen llamándose Catalina, la aplicación se llama HelpyouRYC.
 
 No publiques el PDF original ni datos personales en el repositorio. No se requiere descargar ni cargar manualmente archivos cuando se suben los cambios mediante Git.
 
@@ -71,7 +71,7 @@ node --check organizer.js
 node --test tests/core.test.mjs
 ```
 
-La prueba de navegador usa Playwright solo como herramienta de desarrollo; la web no depende de él. Con Chromium instalado, se puede instalar Playwright fuera del checkout y ejecutar contra el servidor ya iniciado:
+La prueba de navegador usa Playwright solo como herramienta de desarrollo, la web no depende de él. Con Chromium instalado, se puede instalar Playwright fuera del checkout y ejecutar contra el servidor ya iniciado:
 
 ```sh
 npm install --prefix /tmp/helpyou-browser-check --cache /tmp/helpyou-npm-cache --no-package-lock playwright

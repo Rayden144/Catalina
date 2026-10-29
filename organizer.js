@@ -81,14 +81,14 @@ export function mountOrganizer(container) {
         const events = sortedForDate(state.entries, date);
         return `<section class="org-day" aria-labelledby="org-day-${i}"><h3 id="org-day-${i}">${DAYS[i]}<span>${esc(shortDate(date))}</span></h3><div class="org-day-events">${events.length ? events.map(event => `<article class="org-event" data-scope="${event.scope}"><span class="org-event-time">${event.start}–${event.end}</span><h4>${esc(event.title)}</h4><span class="org-event-scope">${SCOPES[event.scope]}</span><div class="org-event-actions"><button type="button" data-org="edit" data-id="${esc(event.id)}" aria-label="Editar ${esc(event.title)} del ${DAYS[i]}">Editar</button><button type="button" data-org="delete" data-id="${esc(event.id)}" aria-label="Eliminar ${esc(event.title)} del ${DAYS[i]}">Eliminar</button></div></article>`).join('') : '<p class="org-empty">Sin actividades.<br>Un espacio por organizar.</p>'}</div><button class="org-add-day" type="button" data-org="day" data-date="${date}" aria-label="Añadir actividad el ${DAYS[i]}">+ Añadir</button></section>`;
       }).join('')}</div></div>
-      <div class="org-privacy"><label class="org-save-label"><input type="checkbox" id="org-save" ${state.save ? 'checked' : ''}> Guardar mi organizador en este dispositivo</label><p>Opcional. Se guarda solo en este navegador y no se envía a un servidor. En un equipo compartido, déjalo desmarcado. Al desmarcarlo, se elimina la copia guardada; las actividades siguen disponibles hasta recargar o cerrar esta sesión.</p></div>
-      <p class="org-export-note">El PDF se descarga directamente. No necesitas ingresar un correo. Guarda la descarga si quieres conservar tu semana. El PDF admite texto en español; los emojis y otros símbolos no compatibles se reemplazan por ?.</p>
+      <div class="org-privacy"><label class="org-save-label"><input type="checkbox" id="org-save" ${state.save ? 'checked' : ''}> Guardar mi organizador en este dispositivo</label><p>Opcional. Se guarda solo en este navegador y no se envía a un servidor. En un equipo compartido, déjalo desmarcado. Al desmarcarlo, se elimina la copia guardada, las actividades siguen disponibles hasta recargar o cerrar esta sesión.</p></div>
+      <p class="org-export-note">El PDF se descarga directamente. No necesitas ingresar un correo. Guarda la descarga si quieres conservar tu semana. El PDF admite texto en español, los emojis y otros símbolos no compatibles se reemplazan por ?.</p>
       <p class="org-status" role="status" aria-live="polite">${esc(message)}</p>`;
     message = '';
   }
   function commitMessage(text) {
     const saved = persist();
-    message = saved ? text : `${text} El navegador no permitió guardar los datos; descarga tu PDF para conservarlos.`;
+    message = saved ? text : `${text} El navegador no permitió guardar los datos, descarga tu PDF para conservarlos.`;
     render();
   }
   function changeWeek(value) {
@@ -157,7 +157,7 @@ export function mountOrganizer(container) {
 }
 
 // Helvetica con WinAnsi mantiene los acentos españoles. Los símbolos que no existen
-// en esa codificación se sustituyen por "?"; la web conserva la entrada original.
+// en esa codificación se sustituyen por "?", la web conserva la entrada original.
 function winAnsi(text) {
   const extra = { '€': 128, '‚': 130, 'ƒ': 131, '„': 132, '…': 133, '†': 134, '‡': 135, 'ˆ': 136, '‰': 137, 'Š': 138, '‹': 139, 'Œ': 140, 'Ž': 142, '‘': 145, '’': 146, '“': 147, '”': 148, '•': 149, '–': 150, '—': 151, '˜': 152, '™': 153, 'š': 154, '›': 155, 'œ': 156, 'ž': 158, 'Ÿ': 159 };
   return Array.from(String(text).normalize('NFC')).map(char => {

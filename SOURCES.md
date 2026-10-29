@@ -4,7 +4,7 @@ Fuente única de contenido psicopedagógico: **ENTREGABLE I_ Avance I.pdf**, pá
 
 ## Preguntas
 
-Los textos de los 12 ítems seleccionados se conservan; el orden es laboral, personal, académico y familiar. Cada ámbito contiene 3 ítems.
+Los textos de los 12 ítems seleccionados se conservan, el orden es laboral, personal, académico y familiar. Cada ámbito contiene 3 ítems.
 
 | ID web | Ámbito | Ítem original | Página física | Tema |
 |---|---|---|---|---|
@@ -38,7 +38,7 @@ Los títulos y párrafos visibles son síntesis, no citas literales. Las invitac
 
 - Las siete etiquetas provienen del pedido del usuario: tristeza, estrés, enojo, alegría, angustia, miedo y preocupación. Se corrigieron únicamente ortografía y tildes.
 - La fuente no define cómo inferir esas siete emociones a partir de frecuencias. Las emociones se autoeligen separadamente y pueden omitirse.
-- El gráfico cuenta etiquetas explícitas, con denominador igual al número de etiquetas válidas elegidas; no usa frecuencias como pesos, no diagnostica y no infiere probabilidades emocionales.
+- El gráfico cuenta etiquetas explícitas, con denominador igual al número de etiquetas válidas elegidas, no usa frecuencias como pesos, no diagnostica y no infiere probabilidades emocionales.
 - La fuente no ofrece estrategias diferenciadas para cada emoción. Por eso cada selección abre los mismos cuatro focos generales documentados, con explicación visible. Incorporar diferencias requiere material del proyecto que las sustente.
 - La página 20 indica que los resultados no constituyen un diagnóstico clínico. Esa distinción se conserva en la web.
 - El organizador y su PDF responden al requisito funcional escrito y al objetivo documental de organización del tiempo.
