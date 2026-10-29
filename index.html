@@ -4,21 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f5f0">
-  <meta name="description" content="Un espacio para reconocer tus emociones y encontrar una pequeña pausa.">
-  <title>HelpyouRYC · Un momento para ti</title>
+  <meta name="description" content="Apoyo psicopedagógico para reconocer emociones y organizar el tiempo entre estudios, trabajo, familia y vida personal.">
+  <title>HelpyouRYC · Tu espacio psicopedagógico</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <script type="module" src="app.js"></script>
 </head>
 <body>
-  <header class="site-header"><a class="brand" href="./" aria-label="HelpyouRYC, inicio"><span class="brand-mark" aria-hidden="true">✳︎</span> HelpyouRYC</a><span class="header-note">TU ESPACIO DE BIENESTAR</span><button class="text-button" id="about-button">Acerca de este espacio <span aria-hidden="true">↗</span></button></header>
-  <main>
-    <section class="intro" aria-labelledby="main-title"><div class="eyebrow"><span></span> HAZ UNA PAUSA. ESTÁS AQUÍ.</div><h1 id="main-title">¿Cómo te sientes<br><em>en este momento?</em></h1><p>No necesitas tener todas las respuestas. Empieza por reconocer<br class="desktop-break"> lo que sientes y encuentra un pequeño paso para cuidarte.</p><div class="intro-flower" aria-hidden="true">✳︎</div></section>
-    <section aria-labelledby="emotions-title" class="emotions-section"><div class="section-label"><h2 id="emotions-title">ELIGE UNA EMOCIÓN</h2><span>Todas tienen un lugar aquí</span></div><div id="emotion-grid" class="emotion-grid"></div></section>
-    <section class="pause-banner"><div class="pause-icon" aria-hidden="true">◌</div><div><h2>A veces, solo hace falta una pausa.</h2><p>Regálate un minuto para respirar, sin tener que explicar nada.</p></div><button id="breathe-button" class="pill-button">Respiremos juntos <span aria-hidden="true">↗</span></button></section>
-    <footer><p>Hecho para acompañarte, un momento a la vez.</p><button class="text-button" id="help-button">¿Necesitas más apoyo? <span aria-hidden="true">↗</span></button><span class="footer-note">ORIENTACIÓN GENERAL · NO REEMPLAZA EL APOYO PROFESIONAL</span></footer>
-  </main>
-  <dialog id="emotion-dialog" class="content-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span id="dialog-label" class="eyebrow">UN MOMENTO PARA TI</span><button class="close-button" data-close aria-label="Cerrar">×</button></div><div id="dialog-symbol" class="dialog-symbol" aria-hidden="true"></div><h2 id="dialog-title"></h2><p id="dialog-description" class="dialog-description"></p><div id="recommendations"></div><div class="reflection"><label for="reflection-input">Un pequeño espacio para expresarte</label><p>¿Qué necesitas ahora? Puedes escribirlo aquí. No se guarda ni se envía.</p><textarea id="reflection-input" rows="3" placeholder="En este momento necesito…" maxlength="1500"></textarea></div><button class="pill-button dialog-done" data-close>Me llevo este pequeño paso <span aria-hidden="true">✓</span></button><p class="dialog-disclaimer">Sugerencias educativas generales para reconocer emociones y practicar la autorregulación. No son un diagnóstico ni un tratamiento.</p></dialog>
-  <dialog id="breathing-dialog" class="breathing-dialog" aria-labelledby="breathing-title"><div class="dialog-top"><span class="eyebrow">VUELVE AL PRESENTE</span><button class="close-button" data-close aria-label="Cerrar">×</button></div><h2 id="breathing-title">Un respiro, a tu ritmo.</h2><p>Respira suavemente, sin retener el aire ni forzarlo. Si te incomoda o te mareas, detente y vuelve a respirar con normalidad.</p><div class="breathing-orbit" id="breathing-orbit"><div class="breathing-circle"><span id="breathing-phase" role="status" aria-live="polite">Cuando quieras</span></div></div><p id="breathing-progress">Cuatro ciclos para hacer una pausa.</p><button id="breathing-toggle" class="pill-button">Comenzar</button><p class="breathing-alternative">También puedes dejar el ejercicio y observar tres cosas a tu alrededor.</p></dialog>
-  <dialog id="info-dialog" class="content-dialog" aria-labelledby="info-title"><div class="dialog-top"><span class="eyebrow">NO TIENES QUE HACERLO A SOLAS</span><button class="close-button" data-close aria-label="Cerrar">×</button></div><h2 id="info-title"></h2><div id="info-content"></div></dialog>
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="HelpyouRYC, inicio"><span class="brand-mark" aria-hidden="true">✳︎</span>HelpyouRYC</a>
+    <span class="header-note">APOYO PSICOPEDAGÓGICO</span>
+    <nav aria-label="Navegación principal"><a href="#inicio" class="nav-link">Inicio</a><a href="#organizador" class="nav-link">Organizador</a><button id="about-button" class="text-button">Sobre el proyecto</button></nav>
+  </header>
+  <main id="main-content" tabindex="-1"></main>
+  <footer class="site-footer"><p>Un espacio para reconocer, organizar y aprender.</p><span>HelpyouRYC · Enfoque psicopedagógico</span><p class="footer-note">Autorreconocimiento, no diagnóstico clínico. Tus respuestas no se envían a un servidor.</p></footer>
+  <dialog id="info-dialog" aria-labelledby="info-title">
+    <div class="dialog-top"><span class="eyebrow">SOBRE ESTE ESPACIO</span><button class="close-button" aria-label="Cerrar información">×</button></div>
+    <h2 id="info-title">El aprendizaje también necesita bienestar.</h2>
+    <p>Esta web se basa en las páginas 1–21 de «ENTREGABLE I: Avance I», del proyecto «Soporte psicopedagógico contra el burnout», dirigido a estudiantes universitarios trabajadores de jornada vespertina.</p>
+    <p>Su propósito es reconocer necesidades en los ámbitos laboral, personal, académico y familiar, y favorecer la organización del tiempo y las condiciones para aprender.</p>
+    <p>Los ítems se seleccionaron del cuestionario del documento. La selección de 12 preguntas y las etiquetas emocionales son una adaptación de esta web, no un instrumento validado. No se infiere una emoción a partir de la frecuencia ni se diagnostica burnout.</p>
+    <p>El documento disponible no contiene estrategias diferenciadas para las siete emociones. Se muestran únicamente los focos generales de apoyo descritos en el proyecto, con sus páginas de referencia.</p>
+    <p>Las respuestas permanecen solo en esta pestaña. El organizador se guarda en este dispositivo únicamente si activas esa opción. La exportación a PDF se realiza en tu navegador, sin solicitar correo. El alojamiento puede registrar visitas técnicas.</p>
+  </dialog>
+  <noscript><p class="notice">Activa JavaScript para usar el cuestionario y el organizador. No necesitas crear una cuenta.</p></noscript>
 </body>
 </html>

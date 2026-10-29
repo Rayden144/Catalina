@@ -1,57 +1,81 @@
 # HelpyouRYC
 
-Web interactiva, en español y adaptada a teléfonos, para reconocer emociones y explorar prácticas educativas de autocuidado. Incluye tristeza, estrés, enojo, felicidad y angustia, recomendaciones, una reflexión temporal y un ejercicio de respiración con opción de detenerlo.
+Web estática de apoyo psicopedagógico para estudiantes que compatibilizan trabajo, estudios, vida personal y familiar. HTML, CSS y JavaScript nativos: sin dependencias de producción, cuentas, backend ni compilación. Compatible con GitHub Pages y Apache.
 
-Está construida con HTML, CSS y JavaScript sin frameworks, dependencias de producción, cuentas, analítica ni fuentes externas. No requiere backend ni claves. El texto de reflexión permanece en memoria y se borra al cerrar su ventana; no se envía ni se almacena.
+## Qué incluye
 
-El contenido es orientación general, no diagnóstico ni tratamiento. Antes de utilizarlo en un establecimiento educativo, revisar su pertinencia y lenguaje con profesionales de psicopedagogía y salud mental, considerando la edad de los participantes. No se presenta como contenido clínicamente validado.
+- Inicio con botones **Iniciar** y **Organizador**, y navegación de vuelta al inicio.
+- 12 ítems del proyecto: 3 laborales, 3 personales, 3 académicos y 3 familiares.
+- Cuatro frecuencias originales: Nunca, A veces, Frecuentemente y Siempre.
+- Etiqueta emocional opcional, elegida explícitamente por la persona: tristeza, estrés, enojo, alegría, angustia, miedo o preocupación.
+- Gráfico circular interactivo y lista equivalente, utilizables con teclado. Porcentaje = apariciones de una etiqueta / total de etiquetas elegidas × 100. Las omisiones se excluyen; los empates se muestran. Redondeo a un decimal (la suma visible puede variar una décima).
+- Consulta de los cuatro focos generales de apoyo del documento al elegir una emoción.
+- Organizador por semanas, lunes–domingo, con horas, ámbitos y actividades que pueden añadirse, editarse y eliminarse.
+- Descarga directa de un PDF local, multipágina si es necesario. No se solicita correo ni se envían actividades fuera del dispositivo. El PDF conserva español y signos WinAnsi; emojis y caracteres fuera de esa codificación se sustituyen por `?`.
 
-## Publicar gratis en GitHub Pages (recomendado)
+## Base documental y límites
 
-1. Sube `index.html`, `styles.css`, `app.js` y este README a la raíz del repositorio `Rayden144/Catalina`, en la rama `main`. Puedes hacerlo desde GitHub con **Add file → Upload files** o mediante Git. No basta con tener un repositorio vacío.
-2. En GitHub, abre **Settings → Pages**.
-3. En **Build and deployment**, selecciona **Deploy from a branch**.
-4. Elige la rama **main**, la carpeta **/ (root)** y pulsa **Save**.
-5. Espera a que termine el despliegue. Usa el enlace que GitHub muestre en Pages. La dirección esperada para este repositorio es `https://rayden144.github.io/Catalina/`; no estará activa hasta publicar correctamente.
+Se usaron **solo las páginas físicas 1–21** de `ENTREGABLE I_ Avance I.pdf`, la fotografía de notas y los requisitos escritos. No se ha recibido un segundo documento. No se consultaron páginas posteriores ni fuentes externas de contenido psicopedagógico. Consulta [SOURCES.md](SOURCES.md) para la trazabilidad.
 
-Los teléfonos podrán entrar desde cualquier red, sin Apache y sin mantener encendido un notebook. Puedes compartir el enlace o crear un código QR. GitHub Pages es gratuito con repositorios públicos en GitHub Free; si el repositorio es privado, comprueba las condiciones de tu plan. Todo archivo publicado es accesible para los visitantes: no subas información personal ni secretos. Los cambios posteriores en la rama de publicación se despliegan de nuevo.
+El documento no contiene una clave frecuencia → emoción ni un repertorio de estrategias por emoción. Para no inventarlos, se conservó la escala original y se incorporó una autoetiqueta emocional separada. Esta selección de ítems e interfaz es una adaptación, no un instrumento validado ni un diagnóstico de burnout. Las frecuencias no se puntúan como intensidad clínica.
 
-## Probar en el notebook y en teléfonos de la misma red
+Los focos de apoyo son los mismos para las siete emociones y se identifican como generales. No se presentan técnicas clínicas o recomendaciones específicas no documentadas. Las preguntas de revisión del organizador son adaptaciones funcionales de los objetivos descritos en la fuente. El segundo documento sigue siendo necesario si aporta estrategias diferenciadas o una clave que deba implementarse.
 
-Con Python 3 instalado, abre una terminal en la carpeta del proyecto y ejecuta:
+## Privacidad
+
+Las respuestas del recorrido quedan únicamente en memoria y se pierden al recargar/cerrar la página. Volver al inicio o visitar el organizador no las borra. «Volver a responder» pide confirmación y reinicia únicamente el cuestionario.
+
+Las actividades también quedan en memoria por defecto. **Guardar mi organizador en este dispositivo** permite persistirlas en `localStorage` únicamente en ese navegador. Al desmarcar se elimina la copia guardada. En equipos compartidos, no activar esa opción. El alojamiento web puede registrar visitas técnicas.
+
+La exportación crea un archivo en el navegador; el navegador decide dónde descargarlo o muestra su selector. La web no puede escribir arbitrariamente en una carpeta del equipo ni confirmar que la persona haya conservado el archivo.
+
+## Desarrollo
+
+Usa el checkout existente: las tareas de nube ya están aisladas; no crees un Git worktree salvo petición expresa.
 
 ```sh
+cd /workspace/Catalina
 python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-En Windows puedes usar `py -m http.server 8000 --bind 0.0.0.0`. Comprueba la página en el propio notebook abriendo `http://localhost:8000`. Detén el servidor con Ctrl+C.
+Abre `http://localhost:8000` en el equipo que ejecuta el servidor. En Windows se puede usar `py -m http.server 8000 --bind 0.0.0.0`. Detén el servidor con Ctrl+C. Los módulos JavaScript deben servirse por HTTP, no abriendo `index.html` con `file://`.
 
-Para otros teléfonos:
+Desde teléfonos en la misma red, entra a `http://IP-DEL-NOTEBOOK:8000/` usando la IPv4 local del notebook. `localhost` desde el teléfono apunta al teléfono. Algunos Wi-Fi de invitados y puntos de acceso aíslan dispositivos. Mantén el notebook y servidor encendidos y permite el puerto únicamente en redes privadas; no expongas este servidor de prueba a internet.
 
-1. Conecta el notebook y los teléfonos al mismo Wi-Fi, o conecta el notebook al punto de acceso del teléfono.
-2. Busca la dirección IPv4 local del notebook: `ipconfig` en Windows, `ip addr` en Linux o los ajustes de red en macOS.
-3. En los teléfonos abre `http://IP-DEL-NOTEBOOK:8000/`, reemplazando el texto por esa IPv4. Por ejemplo, si es `192.168.1.20`, usa `http://192.168.1.20:8000/`.
-4. Si el firewall pregunta, permite el servidor únicamente en tu red privada. Mantén el notebook encendido y el servidor abierto.
+### Apache / XAMPP
 
-`localhost` en un teléfono apunta al teléfono, no al notebook. Algunas redes de invitados y puntos de acceso móviles aíslan los dispositivos entre sí; si ocurre, utiliza una red que permita comunicación local o publica en GitHub Pages. Este servidor sirve para demostración local, no para exposición pública; no abras puertos del router.
+Copia los archivos del proyecto a una carpeta de la raíz pública (por ejemplo `htdocs/catalina`) y enciende Apache. En el notebook abre `http://localhost/catalina/` y desde la misma red `http://IP-DEL-NOTEBOOK/catalina/`. No requiere PHP ni base de datos.
 
-### Usar Apache o XAMPP
+### GitHub Pages
 
-Copia la carpeta del proyecto a la raíz pública de Apache (por ejemplo, `htdocs/catalina` en XAMPP). Con Apache iniciado, prueba en el notebook `http://localhost/catalina/`. Desde los teléfonos de la misma red, usa `http://IP-DEL-NOTEBOOK/catalina/` (añade el puerto si Apache usa uno distinto de 80). No necesitas PHP, base de datos ni reglas de reescritura.
+En `Rayden144/Catalina`: **Settings → Pages → Deploy from a branch → main → / (root) → Save**. El enlace esperado es `https://rayden144.github.io/Catalina/`. Publicar en Pages permite acceso desde cualquier red con internet, sin mantener el notebook encendido. Una actualización de `main` vuelve a desplegar el sitio; espera a que GitHub confirme el despliegue. El repositorio y su ruta siguen llamándose Catalina; la aplicación se llama HelpyouRYC.
 
-## Cambiar o añadir emociones
+No publiques el PDF original ni datos personales en el repositorio. No se requiere descargar ni cargar manualmente archivos cuando se suben los cambios mediante Git.
 
-Edita el arreglo `emotions` al comienzo de `app.js`. Cada entrada define `id`, `name`, `symbol`, `color`, `accent`, `teaser`, `title`, `description` y `steps` (pares de título y recomendación). La interfaz genera automáticamente las tarjetas y sus recomendaciones. Usa identificadores únicos y colores que mantengan buena legibilidad. Los textos se insertan como texto, sin interpretar HTML.
+## Editar
 
-La apariencia está en `styles.css`; los textos generales y la estructura están en `index.html`. Puedes solicitar cambios de contenido, colores o nuevas emociones sin cambiar de tecnología.
+- `content.js`: preguntas, páginas fuente, etiquetas, colores y focos documentales. No añadas relaciones entre frecuencia y emoción sin sustento del proyecto.
+- `app.js`: navegación, cuestionario, resultados y gráfico.
+- `organizer.js`: calendario, persistencia opcional y generador PDF.
+- `index.html`: nombre, cabecera e información del proyecto.
+- `styles.css`: diseño adaptable a móvil y preferencia de movimiento reducido.
 
-## Desarrollo y comprobación
+## Verificación
 
-No hay instalación ni compilación. Usa el checkout existente; cada tarea de nube ya está aislada y no necesita un Git worktree adicional.
+Con Node.js moderno:
 
 ```sh
 node --check app.js
-python3 -m http.server 8000 --bind 0.0.0.0
+node --check content.js
+node --check organizer.js
+node --test tests/core.test.mjs
 ```
 
-Prueba cada emoción, cierra las ventanas con el botón y Escape, comprueba que la reflexión se borra, inicia y detén la respiración y revisa la interfaz en pantalla móvil. El ejercicio dura cuatro ciclos de cuatro segundos de inspiración y seis de espiración; se reinicia si se oculta la pestaña. Respeta la preferencia del sistema de reducir movimiento. Las ventanas nativas `dialog` requieren un navegador moderno.
+La prueba de navegador usa Playwright solo como herramienta de desarrollo; la web no depende de él. Con Chromium instalado, se puede instalar Playwright fuera del checkout y ejecutar contra el servidor ya iniciado:
+
+```sh
+npm install --prefix /tmp/helpyou-browser-check --cache /tmp/helpyou-npm-cache --no-package-lock playwright
+NODE_PATH=/tmp/helpyou-browser-check/node_modules APP_URL=http://127.0.0.1:8000/ node tests/browser.cjs
+```
+
+`CHROMIUM_PATH` permite ajustar la ruta al navegador (por defecto `/usr/bin/chromium`). La prueba cubre las 12 preguntas, selección obligatoria, edición hacia atrás, empates, omisiones, gráfico por teclado, cuatro ámbitos, reinicio, organizador, semanas, privacidad, PDF y tamaños de pantalla 360/390/768/1280. Sus capturas y PDF se escriben en `/tmp`, fuera del checkout.
