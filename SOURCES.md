@@ -4,7 +4,7 @@ Fuente única de contenido psicopedagógico: **ENTREGABLE I_ Avance I.pdf**, pá
 
 ## Preguntas
 
-Los textos de los 12 ítems seleccionados se conservan, el orden es laboral, personal, académico y familiar. Cada ámbito contiene 3 ítems.
+Las 12 preguntas se reformulan a partir de los temas de estos ítems, en orden laboral, personal, académico y familiar. Cada ámbito contiene 3 preguntas. No son transcripciones literales del cuestionario original.
 
 | ID web | Ámbito | Ítem original | Página física | Tema |
 |---|---|---|---|---|
@@ -21,7 +21,7 @@ Los textos de los 12 ítems seleccionados se conservan, el orden es laboral, per
 | f2 | Familiar | 13 | 15 | Preocupaciones y estado emocional |
 | f3 | Familiar | 16 | 16 | Expresión de emociones en la familia |
 
-Se conserva la escala de cuatro frecuencias del cuestionario: Nunca, A veces, Frecuentemente, Siempre. La selección de 12 ítems no se presenta como una reproducción completa ni validación del instrumento original.
+La escala original de frecuencia no se usa para inferir emociones. En su lugar, cada pregunta ofrece cuatro alternativas descriptivas nuevas, con asociaciones orientativas elaboradas para esta web y revisables en ASSOCIATIONS.md. La reformulación no se presenta como una reproducción ni validación del instrumento original.
 
 ## Orientaciones generales
 
@@ -37,8 +37,8 @@ Los títulos y párrafos visibles son síntesis, no citas literales. Las invitac
 ## Adaptaciones de interfaz y ausencias
 
 - Las siete etiquetas provienen del pedido del usuario: tristeza, estrés, enojo, alegría, angustia, miedo y preocupación. Se corrigieron únicamente ortografía y tildes.
-- La fuente no define cómo inferir esas siete emociones a partir de frecuencias. Las emociones se autoeligen separadamente y pueden omitirse.
-- El gráfico cuenta etiquetas explícitas, con denominador igual al número de etiquetas válidas elegidas, no usa frecuencias como pesos, no diagnostica y no infiere probabilidades emocionales.
+- La fuente no define cómo inferir esas siete emociones a partir de frecuencias. Las nuevas alternativas describen experiencias y se asocian internamente a una emoción como propuesta orientativa de diseño. No se pide al participante que elija etiquetas.
+- Cada opción válida suma un punto a su asociación interna. El gráfico divide los puntos de cada emoción entre el total de respuestas consideradas. Omitir una situación no suma puntos. No usa frecuencias como pesos, no diagnostica y no infiere probabilidades emocionales.
 - La fuente no ofrece estrategias diferenciadas para cada emoción. Por eso cada selección abre los mismos cuatro focos generales documentados, con explicación visible. Incorporar diferencias requiere material del proyecto que las sustente.
 - La página 20 indica que los resultados no constituyen un diagnóstico clínico. Esa distinción se conserva en la web.
 - El organizador y su PDF responden al requisito funcional escrito y al objetivo documental de organización del tiempo.
