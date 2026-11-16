@@ -153,15 +153,6 @@ export const questions = [
     ]
   }
 ];
-// Síntesis de los focos de apoyo explicitados en la fuente.
-// Se conservan como apoyos generales comunes a las siete emociones.
-export const supports = [
-  { domain: 'laboral', title: 'Equilibrio entre trabajo y estudio', text: 'El proyecto identifica el autocuidado y el equilibrio entre las exigencias laborales y los estudios como focos de apoyo psicopedagógico.', reflection: 'Revisa en el organizador el tiempo destinado al trabajo y a tus actividades académicas.', source: 'p. 20' },
-  { domain: 'personal', title: 'Un lugar para tus necesidades', text: 'El proyecto destaca el descanso, la recreación, el autocuidado y el reconocimiento del impacto de las emociones en el bienestar.', reflection: 'Revisa si tu semana contempla tiempo de descanso y actividades que disfrutas.', source: 'pp. 17–19 y 21' },
-  { domain: 'academico', title: 'Condiciones para aprender', text: 'El enfoque psicopedagógico busca favorecer la concentración, la motivación, la organización del tiempo y la disposición hacia las actividades académicas.', reflection: 'Revisa cómo distribuyes el tiempo para trabajos, evaluaciones y tareas académicas.', source: 'pp. 3, 11 y 20' },
-  { domain: 'familiar', title: 'Apoyo y equilibrio familiar', text: 'El proyecto considera el apoyo familiar, la expresión de emociones y preocupaciones y el equilibrio entre responsabilidades familiares, académicas y laborales.', reflection: 'Reconoce con quién puedes expresar tus preocupaciones y revisa el tiempo dedicado a las responsabilidades familiares.', source: 'pp. 15–16 y 21' }
-];
-
 // Cada opción no neutra aporta un punto a su asociación interna. No es una
 // probabilidad clínica ni una medida de intensidad. Omitir no añade puntos.
 // Las respuestas neutras se registran aparte, sin atribuirles una emoción.

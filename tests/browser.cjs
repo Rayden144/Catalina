@@ -88,6 +88,29 @@ const fs = require('node:fs');
     assert.match(await page.locator('#support-panel h2').textContent(), /^Alegría/);
     assert.equal(await page.locator('.support-card').count(), 4);
     assert.doesNotMatch(await page.locator('#support-panel').textContent(), /Base documental|adaptación al organizador/i);
+    const distinctPlans = new Set();
+    const personalTitles = new Set();
+    for (const id of ['alegria', 'estres', 'enojo', 'tristeza', 'angustia', 'miedo', 'preocupacion']) {
+      await page.locator(`.legend-button[data-emotion=${id}]`).click();
+      assert.equal(await page.locator('#support-panel').getAttribute('data-emotion'), id);
+      assert.equal(await page.locator(`.legend-button[data-emotion=${id}]`).getAttribute('aria-pressed'), 'true');
+      assert.equal(await page.locator('.support-card').count(), 4);
+      assert.deepEqual((await page.locator('.support-card').evaluateAll(cards => cards.map(card => card.dataset.domain))).sort(), ['academico', 'familiar', 'laboral', 'personal']);
+      assert.equal(await page.locator('.strategy-steps li').count(), 8);
+      distinctPlans.add(await page.locator('.support-grid').innerText());
+      personalTitles.add(await page.locator('.support-card[data-domain=personal] h3').textContent());
+      assert.equal(await page.locator('#support-panel a[href^="https:"]').count(), 0);
+      assert.doesNotMatch(await page.locator('#support-panel').innerText(), /CASEL|NHS|Referencias|Fuentes consultadas/);
+      await page.setViewportSize({ width: 360, height: 844 });
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Estrategias sin overflow: ${id}`);
+    }
+    assert.equal(distinctPlans.size, 7);
+    assert.equal(personalTitles.size, 7);
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.locator('.legend-button[data-emotion=alegria]').click();
+    assert.match(await page.locator('.support-card[data-domain=personal] h3').textContent(), /Disfruta/);
+    await page.locator('.legend-button[data-emotion=estres]').click();
+    assert.match(await page.locator('.support-card[data-domain=personal] h3').textContent(), /Reduce la carga/);
     await page.locator('.legend-button[data-emotion=tristeza]').click();
     assert.match(await page.locator('#support-panel h2').textContent(), /^Tristeza/);
     await page.screenshot({ path: '/tmp/psicointegra-results-desktop.png', fullPage: true });
@@ -174,6 +197,6 @@ const fs = require('node:fs');
     assert.equal(await page.locator('.chart-segment').count(), 0);
     assert.ok(!(await page.locator('main').textContent()).includes('NaN'));
     assert.deepEqual(errors, []); assert.deepEqual(badResponses, []);
-    console.log('PASS: cuestionario completo sin etiquetas visibles, asociación automática, validación, edición, respuestas positivas y neutras, omisiones, gráfico por teclado, 4 ámbitos, reinicio, organizador CRUD/semanas/privacidad/PDF, navegación y tamaños 360/390/768/1280, sin errores JS/HTTP.');
+    console.log('PASS: cuestionario completo sin etiquetas visibles, asociación automática, validación, edición, respuestas positivas y neutras, omisiones, gráfico por teclado, 28 estrategias en 7 emociones y 4 ámbitos, sin referencias visibles, reinicio, organizador CRUD/semanas/privacidad/PDF, navegación y tamaños 360/390/768/1280, sin errores JS/HTTP.');
   } finally { await browser.close(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

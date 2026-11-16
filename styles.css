@@ -18,3 +18,10 @@
 .response-options .choice:nth-child(4){background:#fcebf2}
 .response-options .choice:nth-child(5){background:#f5dce8}
 .response-options .choice:has(input:checked){border-color:#577b9b;box-shadow:inset 0 0 0 1px #577b9b}
+
+/* Acciones por emoción y ámbito. */
+.strategy-steps{padding-left:20px;margin:14px 0;color:var(--muted);font-size:13px;line-height:1.8}
+.strategy-steps li{padding-left:3px;margin:0 0 12px}
+.strategy-steps li::marker{color:var(--ink);font-weight:bold}
+.reflection-prompt strong{font-size:11px;letter-spacing:.4px}
+.strategy-help{border-left:3px solid #a4bed3;background:#eaf5fc;border-radius:0 10px 10px 0;padding:15px 18px;font-size:12px;line-height:1.8}

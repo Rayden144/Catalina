@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { questions, domains, emotions, summarizeAnswers } from '../content.js';
 import { createOrganizerPDF } from '../organizer.js';
+import { supportPlans, strategySources } from '../strategies.js';
 
 const emotionIds = emotions.map(emotion => emotion.id);
 const countOf = (summary, id) => summary.rows.find(emotion => emotion.id === id).count;
@@ -182,4 +183,39 @@ test('un recorrido mixto distingue respuestas positivas, neutras, difíciles y o
   for (const id of ['alegria', 'enojo', 'estres']) assert.equal(countOf(summary, id), 1);
   assert.equal(summary.leaders.length, 3);
   assert.ok(summary.rows.every(row => Number.isFinite(row.percent)));
+});
+
+test('cada emoción ofrece cuatro ámbitos con acciones distintas y respaldo interno', () => {
+  assert.deepEqual(Object.keys(supportPlans).sort(), emotionIds.toSorted());
+  const allActions = [];
+  for (const plan of Object.values(supportPlans)) {
+    assert.ok(plan.intro.length > 30);
+    assert.deepEqual(plan.cards.map(card => card.domain).sort(), domains.map(domain => domain.id).sort());
+    for (const card of plan.cards) {
+      assert.ok(card.title && card.reflection);
+      assert.ok(card.steps.length >= 2);
+      assert.ok(card.steps.every(step => step.trim().length > 20));
+      assert.ok(card.sourceIds.length >= 2);
+      for (const id of card.sourceIds) {
+        assert.ok(Object.hasOwn(strategySources, id), `Referencia existente: ${id}`);
+        assert.equal(new URL(strategySources[id].url).protocol, 'https:');
+      }
+      allActions.push(card.steps.join(' '));
+    }
+  }
+  assert.equal(new Set(allActions).size, 28, 'Las acciones no se repiten entre tarjetas');
+  for (const domain of domains) {
+    const variations = Object.values(supportPlans).map(plan => plan.cards.find(card => card.domain === domain.id).title);
+    assert.equal(new Set(variations).size, 7, `Siete propuestas diferentes en ${domain.id}`);
+  }
+  assert.match(supportPlans.miedo.help, /riesgo real/);
+  assert.match(supportPlans.tristeza.help, /dos semanas/);
+});
+
+test('70 % de alegría sigue siendo proporción de respuestas, sin cambiar el cálculo por las estrategias', () => {
+  const summary = summarizeAnswers({l1: 'd', l2: 'e', l3: 'a', p1: 'e', p2: 'a', p3: 'a', a1: 'a', a2: 'a', a3: 'a', f1: 'skip', f2: 'a', f3: 'skip'});
+  assert.equal(summary.total, 10);
+  assert.equal(summary.rows.find(row => row.id === 'alegria').percent, 70);
+  assert.equal(summary.rows.find(row => row.id === 'estres').percent, 30);
+  assert.deepEqual(summary.leaders.map(row => row.id), ['alegria']);
 });

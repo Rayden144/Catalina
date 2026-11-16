@@ -9,17 +9,17 @@ Web estática de apoyo psicopedagógico para estudiantes que compatibilizan trab
 - Cinco alternativas descriptivas por pregunta, ordenadas de muy positiva a positiva, neutra, difícil y muy difícil. Las personas eligen experiencias, sin seleccionar etiquetas emocionales.
 - Cada alternativa no neutra tiene una asociación interna orientativa con tristeza, estrés, enojo, alegría, angustia, miedo o preocupación. Las etiquetas se muestran solo en el resultado agregado.
 - Gráfico circular interactivo y lista equivalente, utilizables con teclado. Cada respuesta con asociación emocional suma un punto a su asociación. Las respuestas neutras se muestran por separado y no suman puntos. Porcentaje = puntos de la emoción / respuestas consideradas × 100. La opción de omitir una situación no suma puntos, los empates se muestran. Redondeo a un decimal (la suma visible puede variar una décima).
-- Consulta de los cuatro focos generales de apoyo del documento al elegir una emoción.
+- Estrategias distintas para las siete emociones en los ámbitos personal, académico, laboral y familiar (28 tarjetas). La emoción seleccionada cambia las acciones y la propuesta para la semana.
 - Organizador por semanas, lunes–domingo, con horas, ámbitos y actividades que pueden añadirse, editarse y eliminarse.
 - Descarga directa de un PDF local en A4, con cabecera PsicoIntegra, colores pastel, bloques por día, horarios destacados y numeración de páginas; multipágina si es necesario. No se solicita correo ni se envían actividades fuera del dispositivo. El PDF conserva español y signos WinAnsi, emojis y caracteres fuera de esa codificación se sustituyen por `?`.
 
 ## Base documental y límites
 
-Se usaron **solo las páginas físicas 1–21** de `ENTREGABLE I_ Avance I.pdf`, la fotografía de notas y los requisitos escritos. No se ha recibido un segundo documento. No se consultaron páginas posteriores ni fuentes externas de contenido psicopedagógico. Consulta [SOURCES.md](SOURCES.md) para la trazabilidad.
+Se usaron **solo las páginas físicas 1–21** de `ENTREGABLE I_ Avance I.pdf`, la fotografía de notas y los requisitos escritos. No se ha recibido un segundo documento. No se consultaron páginas posteriores del documento original. Para las nuevas orientaciones por emoción se incorporaron el marco educativo de CASEL y guías de autocuidado del NHS, con la autorización del usuario. Consulta [SOURCES.md](SOURCES.md) para la trazabilidad.
 
 El documento no contiene una clave frecuencia → emoción ni un repertorio de estrategias por emoción. Las preguntas y alternativas se reformularon con correspondencias orientativas para esta web, separadas de la escala de frecuencia original. Esta adaptación no es un instrumento validado ni un diagnóstico de burnout. Los porcentajes indican la distribución de respuestas asociadas a emociones, no intensidad ni probabilidades clínicas. La propuesta completa se puede revisar en [ASSOCIATIONS.md](ASSOCIATIONS.md).
 
-Los focos de apoyo son los mismos para las siete emociones y se identifican como generales. No se presentan técnicas clínicas o recomendaciones específicas no documentadas. Las preguntas de revisión del organizador son adaptaciones funcionales de los objetivos descritos en la fuente. Las asociaciones nuevas son una propuesta revisable y no se atribuyen al PDF. Incorporar estrategias diferenciadas requiere material del proyecto que las sustente.
+Las estrategias por emoción son adaptaciones educativas de principios documentados, no tratamientos ni intervenciones validadas para cada combinación de emoción y ámbito. Las referencias, los criterios de adaptación y sus límites están en SOURCES.md y en strategies.js. Por preferencia del usuario, las fuentes no se muestran en la interfaz. Las asociaciones del cuestionario no se modifican ni se validan por añadir estas orientaciones.
 
 ## Privacidad
 
@@ -56,6 +56,7 @@ El cálculo es interno en JavaScript y no requiere un backend. Como en cualquier
 
 - `content.js`: preguntas reformuladas, cinco alternativas con IDs estables y asociaciones internas, colores y focos documentales. Para revisar una correspondencia cambia `options[].emotion`, manteniendo su condición orientativa. `summarizeAnswers` resuelve las asociaciones a partir de los IDs de las opciones, nunca acepta una emoción enviada como respuesta.
 - `app.js`: navegación, cuestionario, resultados y gráfico.
+- `strategies.js`: orientaciones por emoción y ámbito, junto con sus referencias internas.
 - `organizer.js`: calendario, persistencia opcional y generador PDF.
 - `index.html`: nombre, cabecera e información del proyecto.
 - `styles.css`: diseño adaptable a móvil y preferencia de movimiento reducido.
@@ -68,6 +69,7 @@ Con Node.js moderno:
 node --check app.js
 node --check content.js
 node --check organizer.js
+node --check strategies.js
 node --test tests/core.test.mjs
 ```
 
@@ -78,4 +80,4 @@ npm install --prefix /tmp/helpyou-browser-check --cache /tmp/helpyou-npm-cache -
 NODE_PATH=/tmp/helpyou-browser-check/node_modules APP_URL=http://127.0.0.1:8000/ node tests/browser.cjs
 ```
 
-`CHROMIUM_PATH` permite ajustar la ruta al navegador (por defecto `/usr/bin/chromium`). La prueba cubre las 12 preguntas con cinco alternativas y sin selectores de emoción, edición hacia atrás, porcentajes automáticos, empates, omisiones, gráfico por teclado, cuatro ámbitos, reinicio, organizador, semanas, privacidad, PDF y tamaños de pantalla 360/390/768/1280. Sus capturas y PDF se escriben en `/tmp`, fuera del checkout.
+`CHROMIUM_PATH` permite ajustar la ruta al navegador (por defecto `/usr/bin/chromium`). La prueba cubre las 12 preguntas con cinco alternativas y sin selectores de emoción, edición hacia atrás, porcentajes automáticos, empates, omisiones, gráfico por teclado, cambio real de estrategias entre las siete emociones y cuatro ámbitos, referencias no visibles, reinicio, organizador, semanas, privacidad, PDF y tamaños de pantalla 360/390/768/1280. Sus capturas y PDF se escriben en `/tmp`, fuera del checkout.
