@@ -146,7 +146,7 @@ export function mountOrganizer(container) {
         const bytes = createOrganizerPDF(state.entries, state.monday);
         const blob = new Blob([bytes], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
-        const link = document.createElement('a'); link.href = url; link.download = `HelpyouRYC-semana-${state.monday}.pdf`;
+        const link = document.createElement('a'); link.href = url; link.download = `PsicoIntegra-semana-${state.monday}.pdf`;
         document.body.append(link); link.click(); link.remove();
         setTimeout(() => URL.revokeObjectURL(url), 60000);
         announce('PDF generado. Revisa las descargas de tu navegador.');
@@ -166,55 +166,129 @@ function winAnsi(text) {
   }).join('');
 }
 function pdfLiteral(text) { return winAnsi(text).replace(/([\\()])/g, '\\$1'); }
-function wrapText(text, limit = 50) {
-  const chars = Array.from(String(text).normalize('NFC').replace(/\s+/g, ' ').trim());
+// Anchuras de Helvetica (AFM), para ajustar el texto sin cortarlo en el PDF.
+const HELVETICA_WIDTHS = [278,278,355,556,556,889,667,191,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,278,278,584,584,584,556,1015,667,667,722,722,667,611,778,722,278,500,667,556,833,722,778,667,778,722,667,611,722,667,944,667,667,611,278,278,278,469,556,333,556,556,500,556,556,278,556,556,222,222,500,222,833,556,556,556,556,333,500,278,556,500,722,500,500,500,334,260,334,584];
+function pdfTextWidth(value, size) {
+  return Array.from(winAnsi(value)).reduce((width, char) => {
+    const base = char.normalize('NFD')[0].charCodeAt(0);
+    return width + (HELVETICA_WIDTHS[base - 32] || 600) * size / 1000;
+  }, 0);
+}
+function wrapText(text, width, size) {
   const lines = [];
-  while (chars.length > limit) {
-    let cut = chars.slice(0, limit + 1).lastIndexOf(' ');
-    if (cut < limit * 0.4) cut = limit;
-    lines.push(chars.splice(0, cut).join(''));
-    if (chars[0] === ' ') chars.shift();
+  let line = '';
+  for (const char of Array.from(String(text).normalize('NFC').replace(/\s+/g, ' ').trim())) {
+    if (line && pdfTextWidth(line + char, size) > width) {
+      const lastSpace = line.lastIndexOf(' ');
+      if (lastSpace > 0) {
+        lines.push(line.slice(0, lastSpace));
+        line = line.slice(lastSpace + 1) + char;
+      } else { lines.push(line); line = char; }
+    } else line += char;
   }
-  if (chars.length) lines.push(chars.join(''));
+  if (line.trim()) lines.push(line.trim());
   return lines;
 }
 export function createOrganizerPDF(entries, monday) {
   if (!parseDate(monday)) throw new Error('Fecha inválida');
   const pages = [];
+  const palette = {
+    ink: '#38465b', muted: '#657086', line: '#e7dfe7', paper: '#fffafb',
+    rose: '#f6dce8', sky: '#dceefa', yellow: '#fff0bd', white: '#ffffff'
+  };
+  const scopeColors = { laboral: palette.yellow, personal: palette.rose, academico: palette.sky, familiar: '#ece2f5' };
+  const weekEntries = entries.filter(isEntry).filter(entry => entry.date >= monday && entry.date <= plusDays(monday, 6));
   let commands = [];
   let y = 0;
-  function text(value, x, baseline, size = 10, bold = false) {
-    commands.push(`BT /${bold ? 'F2' : 'F1'} ${size} Tf 0.16 0.24 0.21 rg 1 0 0 1 ${x} ${baseline} Tm (${pdfLiteral(value)}) Tj ET`);
+  const rgb = hex => [1, 3, 5].map(offset => (parseInt(hex.slice(offset, offset + 2), 16) / 255).toFixed(3)).join(' ');
+  function text(value, x, baseline, size = 10, bold = false, color = palette.ink) {
+    commands.push(`BT /${bold ? 'F2' : 'F1'} ${size} Tf ${rgb(color)} rg 1 0 0 1 ${x} ${baseline} Tm (${pdfLiteral(value)}) Tj ET`);
+  }
+  function box(x, top, width, height, fill, radius = 0, stroke = null) {
+    const bottom = top - height;
+    commands.push('q', `${rgb(fill)} rg`);
+    if (stroke) commands.push(`${rgb(stroke)} RG 0.7 w`);
+    if (!radius) commands.push(`${x} ${bottom} ${width} ${height} re`);
+    else {
+      const r = Math.min(radius, height / 2, width / 2), k = r * 0.552285;
+      commands.push(`${x + r} ${bottom} m ${x + width - r} ${bottom} l`,
+        `${x + width - r + k} ${bottom} ${x + width} ${bottom + r - k} ${x + width} ${bottom + r} c`,
+        `${x + width} ${top - r} l ${x + width} ${top - r + k} ${x + width - r + k} ${top} ${x + width - r} ${top} c`,
+        `${x + r} ${top} l ${x + r - k} ${top} ${x} ${top - r + k} ${x} ${top - r} c`,
+        `${x} ${bottom + r} l ${x} ${bottom + r - k} ${x + r - k} ${bottom} ${x + r} ${bottom} c h`);
+    }
+    commands.push(stroke ? 'B' : 'f', 'Q');
+  }
+  function rule(x1, x2, baseline, color = palette.line) {
+    commands.push(`${rgb(color)} RG 0.6 w ${x1} ${baseline} m ${x2} ${baseline} l S`);
   }
   function newPage() {
     if (commands.length) pages.push(commands.join('\n'));
     commands = [];
-    text('HelpyouRYC', 40, 800, 21, true);
-    text('Mi organizador semanal', 40, 778, 13);
-    text(`${fullDate(monday)} al ${fullDate(plusDays(monday, 6))}`, 40, 759, 10);
-    commands.push('0.8 0.84 0.77 RG 0.7 w 40 745 m 555 745 l S');
-    text('Organización del tiempo · Laboral, personal, académico y familiar', 40, 31, 8);
-    text(`Página ${pages.length + 1}`, 500, 31, 8);
-    y = 724;
+    box(0, 842, 595, 842, palette.paper);
+    box(40, 805, 515, 104, palette.rose, 17);
+    text('PsicoIntegra', 58, 778, 22, true);
+    text('MI ORGANIZADOR SEMANAL', 58, 758, 10, true, palette.muted);
+    const count = `${weekEntries.length} ${weekEntries.length === 1 ? 'actividad' : 'actividades'}`;
+    const countWidth = Math.max(82, pdfTextWidth(count, 9) + 24);
+    box(537 - countWidth, 786, countWidth, 25, palette.yellow, 12);
+    text(count, 549 - countWidth, 770, 9);
+    box(58, 744, 479, 28, palette.white, 9);
+    text(`${fullDate(monday)} al ${fullDate(plusDays(monday, 6))}`, 70, 726, 10);
+    text('Trabajo, estudio, tiempo personal y familia.', 42, 684, 9, false, palette.muted);
+    y = 669;
   }
   newPage();
   DAYS.forEach((day, index) => {
     const date = plusDays(monday, index);
-    if (y < 105) newPage();
-    text(`${day} · ${fullDate(date)}`, 40, y, 12, true); y -= 21;
-    const events = sortedForDate(entries.filter(isEntry), date);
-    if (!events.length) { text('Sin actividades planificadas.', 48, y); y -= 21; }
-    for (const entry of events) {
-      const lines = wrapText(entry.title, 50);
-      const height = 18 + lines.length * 14 + 9;
-      if (y - height < 55) { newPage(); text(`${day} (continuación)`, 40, y, 12, true); y -= 21; }
-      text(`${entry.start}–${entry.end}  |  ${SCOPES[entry.scope]}`, 48, y, 10, true); y -= 16;
-      for (const line of lines) { text(line, 55, y, 10); y -= 14; }
-      y -= 11;
-    }
-    y -= 12;
+    const events = sortedForDate(weekEntries, date).map(entry => {
+      const lines = wrapText(entry.title, 353, 11);
+      return { entry, lines, height: Math.max(44, lines.length * 15 + 27) };
+    });
+    let offset = 0;
+    let continued = false;
+    do {
+      const minimum = 44 + (events[offset]?.height || 16);
+      if (y - minimum < 60) newPage();
+      let height = 44;
+      const chunk = [];
+      while (offset < events.length && y - height - events[offset].height >= 60) {
+        const event = events[offset++];
+        chunk.push(event);
+        height += event.height;
+      }
+      if (!events.length) height += 16;
+      box(40, y, 515, height, palette.white, 12, palette.line);
+      box(48, y - 8, 499, 27, index % 2 ? palette.rose : palette.sky, 7);
+      text(`${day}${continued ? ' · continuación' : ''}`, 59, y - 26, 11, true);
+      const dateLabel = shortDate(date);
+      text(dateLabel, 535 - pdfTextWidth(dateLabel, 9), y - 25, 9, false, palette.muted);
+      let rowTop = y - 43;
+      if (!events.length) {
+        text('Sin actividades planificadas.', 59, rowTop - 12, 10, false, palette.muted);
+      }
+      chunk.forEach(({ entry, lines, height: rowHeight }, rowIndex) => {
+        text(`${entry.start}–${entry.end}`, 59, rowTop - 13, 10, true);
+        const scope = SCOPES[entry.scope];
+        const chipWidth = Math.max(62, pdfTextWidth(scope, 8) + 18);
+        box(58, rowTop - 21, chipWidth, 18, scopeColors[entry.scope], 7);
+        text(scope, 67, rowTop - 33, 8);
+        lines.forEach((line, lineIndex) => text(line, 174, rowTop - 13 - lineIndex * 15, 11));
+        rowTop -= rowHeight;
+        if (rowIndex < chunk.length - 1) rule(59, 535, rowTop + 4);
+      });
+      y -= height + 9;
+      continued = true;
+    } while (offset < events.length);
   });
   pages.push(commands.join('\n'));
+  pages.forEach((content, index) => {
+    commands = [content];
+    rule(40, 555, 46);
+    text('PsicoIntegra · Mi semana, a mi ritmo.', 40, 30, 8, false, palette.muted);
+    text(`${index + 1} / ${pages.length}`, 520, 30, 8, true, palette.muted);
+    pages[index] = commands.join('\n');
+  });
   const objects = [
     '<< /Type /Catalog /Pages 2 0 R >>',
     '',

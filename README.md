@@ -1,4 +1,4 @@
-# HelpyouRYC
+# PsicoIntegra
 
 Web estática de apoyo psicopedagógico para estudiantes que compatibilizan trabajo, estudios, vida personal y familiar. HTML, CSS y JavaScript nativos: sin dependencias de producción, cuentas, backend ni compilación. Compatible con GitHub Pages y Apache.
 
@@ -6,12 +6,12 @@ Web estática de apoyo psicopedagógico para estudiantes que compatibilizan trab
 
 - Inicio con botones **Iniciar** y **Organizador**, y navegación de vuelta al inicio.
 - 12 preguntas sobre los temas del proyecto: 3 laborales, 3 personales, 3 académicas y 3 familiares.
-- Cuatro alternativas descriptivas por pregunta. Las personas eligen experiencias, sin seleccionar etiquetas emocionales.
-- Cada alternativa tiene una asociación interna orientativa con tristeza, estrés, enojo, alegría, angustia, miedo o preocupación. Las etiquetas se muestran solo en el resultado agregado.
-- Gráfico circular interactivo y lista equivalente, utilizables con teclado. Cada respuesta válida suma un punto a su asociación. Porcentaje = puntos de la emoción / respuestas consideradas × 100. La opción de omitir una situación no suma puntos, los empates se muestran. Redondeo a un decimal (la suma visible puede variar una décima).
+- Cinco alternativas descriptivas por pregunta, ordenadas de muy positiva a positiva, neutra, difícil y muy difícil. Las personas eligen experiencias, sin seleccionar etiquetas emocionales.
+- Cada alternativa no neutra tiene una asociación interna orientativa con tristeza, estrés, enojo, alegría, angustia, miedo o preocupación. Las etiquetas se muestran solo en el resultado agregado.
+- Gráfico circular interactivo y lista equivalente, utilizables con teclado. Cada respuesta con asociación emocional suma un punto a su asociación. Las respuestas neutras se muestran por separado y no suman puntos. Porcentaje = puntos de la emoción / respuestas consideradas × 100. La opción de omitir una situación no suma puntos, los empates se muestran. Redondeo a un decimal (la suma visible puede variar una décima).
 - Consulta de los cuatro focos generales de apoyo del documento al elegir una emoción.
 - Organizador por semanas, lunes–domingo, con horas, ámbitos y actividades que pueden añadirse, editarse y eliminarse.
-- Descarga directa de un PDF local, multipágina si es necesario. No se solicita correo ni se envían actividades fuera del dispositivo. El PDF conserva español y signos WinAnsi, emojis y caracteres fuera de esa codificación se sustituyen por `?`.
+- Descarga directa de un PDF local en A4, con cabecera PsicoIntegra, colores pastel, bloques por día, horarios destacados y numeración de páginas; multipágina si es necesario. No se solicita correo ni se envían actividades fuera del dispositivo. El PDF conserva español y signos WinAnsi, emojis y caracteres fuera de esa codificación se sustituyen por `?`.
 
 ## Base documental y límites
 
@@ -48,13 +48,13 @@ Copia los archivos del proyecto a una carpeta de la raíz pública (por ejemplo 
 
 ### GitHub Pages
 
-En `Rayden144/Catalina`: **Settings → Pages → Deploy from a branch → main → / (root) → Save**. El enlace esperado es `https://rayden144.github.io/Catalina/`. Publicar en Pages permite acceso desde cualquier red con internet, sin mantener el notebook encendido. Una actualización de `main` vuelve a desplegar el sitio, espera a que GitHub confirme el despliegue. El repositorio y su ruta siguen llamándose Catalina, la aplicación se llama HelpyouRYC.
+En `Rayden144/Catalina`: **Settings → Pages → Deploy from a branch → main → / (root) → Save**. El enlace esperado es `https://rayden144.github.io/Catalina/`. Publicar en Pages permite acceso desde cualquier red con internet, sin mantener el notebook encendido. Una actualización de `main` vuelve a desplegar el sitio, espera a que GitHub confirme el despliegue. El repositorio y su ruta siguen llamándose Catalina, la aplicación se llama PsicoIntegra.
 
 El cálculo es interno en JavaScript y no requiere un backend. Como en cualquier web estática, su código se puede inspeccionar aunque las asociaciones no se muestren durante las preguntas. No publiques el PDF original ni datos personales en el repositorio. No se requiere descargar ni cargar manualmente archivos cuando se suben los cambios mediante Git.
 
 ## Editar
 
-- `content.js`: preguntas reformuladas, cuatro alternativas con IDs estables y asociaciones internas, colores y focos documentales. Para revisar una correspondencia cambia `options[].emotion`, manteniendo su condición orientativa. `summarizeAnswers` resuelve las asociaciones a partir de los IDs de las opciones, nunca acepta una emoción enviada como respuesta.
+- `content.js`: preguntas reformuladas, cinco alternativas con IDs estables y asociaciones internas, colores y focos documentales. Para revisar una correspondencia cambia `options[].emotion`, manteniendo su condición orientativa. `summarizeAnswers` resuelve las asociaciones a partir de los IDs de las opciones, nunca acepta una emoción enviada como respuesta.
 - `app.js`: navegación, cuestionario, resultados y gráfico.
 - `organizer.js`: calendario, persistencia opcional y generador PDF.
 - `index.html`: nombre, cabecera e información del proyecto.
@@ -78,4 +78,4 @@ npm install --prefix /tmp/helpyou-browser-check --cache /tmp/helpyou-npm-cache -
 NODE_PATH=/tmp/helpyou-browser-check/node_modules APP_URL=http://127.0.0.1:8000/ node tests/browser.cjs
 ```
 
-`CHROMIUM_PATH` permite ajustar la ruta al navegador (por defecto `/usr/bin/chromium`). La prueba cubre las 12 preguntas con cuatro alternativas y sin selectores de emoción, edición hacia atrás, porcentajes automáticos, empates, omisiones, gráfico por teclado, cuatro ámbitos, reinicio, organizador, semanas, privacidad, PDF y tamaños de pantalla 360/390/768/1280. Sus capturas y PDF se escriben en `/tmp`, fuera del checkout.
+`CHROMIUM_PATH` permite ajustar la ruta al navegador (por defecto `/usr/bin/chromium`). La prueba cubre las 12 preguntas con cinco alternativas y sin selectores de emoción, edición hacia atrás, porcentajes automáticos, empates, omisiones, gráfico por teclado, cuatro ámbitos, reinicio, organizador, semanas, privacidad, PDF y tamaños de pantalla 360/390/768/1280. Sus capturas y PDF se escriben en `/tmp`, fuera del checkout.

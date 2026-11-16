@@ -21,7 +21,7 @@ Las 12 preguntas se reformulan a partir de los temas de estos ítems, en orden l
 | f2 | Familiar | 13 | 15 | Preocupaciones y estado emocional |
 | f3 | Familiar | 16 | 16 | Expresión de emociones en la familia |
 
-La escala original de frecuencia no se usa para inferir emociones. En su lugar, cada pregunta ofrece cuatro alternativas descriptivas nuevas, con asociaciones orientativas elaboradas para esta web y revisables en ASSOCIATIONS.md. La reformulación no se presenta como una reproducción ni validación del instrumento original.
+La escala original de frecuencia no se usa para inferir emociones. En su lugar, cada pregunta ofrece cinco alternativas descriptivas nuevas, con asociaciones orientativas elaboradas para esta web y revisables en ASSOCIATIONS.md. Se ordenan de muy positiva a positiva, neutra, difícil y muy difícil para dar espacio a experiencias favorables y habituales junto a las dificultades. La reformulación no se presenta como una reproducción ni validación del instrumento original.
 
 ## Orientaciones generales
 
@@ -38,7 +38,7 @@ Los títulos y párrafos visibles son síntesis, no citas literales. Las invitac
 
 - Las siete etiquetas provienen del pedido del usuario: tristeza, estrés, enojo, alegría, angustia, miedo y preocupación. Se corrigieron únicamente ortografía y tildes.
 - La fuente no define cómo inferir esas siete emociones a partir de frecuencias. Las nuevas alternativas describen experiencias y se asocian internamente a una emoción como propuesta orientativa de diseño. No se pide al participante que elija etiquetas.
-- Cada opción válida suma un punto a su asociación interna. El gráfico divide los puntos de cada emoción entre el total de respuestas consideradas. Omitir una situación no suma puntos. No usa frecuencias como pesos, no diagnostica y no infiere probabilidades emocionales.
+- Cada opción con asociación emocional suma un punto a su asociación interna. Las respuestas neutras se registran por separado y no se asocian a una emoción. El gráfico divide los puntos de cada emoción entre el total de respuestas consideradas. Omitir una situación no suma puntos. No usa frecuencias como pesos, no diagnostica y no infiere probabilidades emocionales.
 - La fuente no ofrece estrategias diferenciadas para cada emoción. Por eso cada selección abre los mismos cuatro focos generales documentados, con explicación visible. Incorporar diferencias requiere material del proyecto que las sustente.
 - La página 20 indica que los resultados no constituyen un diagnóstico clínico. Esa distinción se conserva en la web.
 - El organizador y su PDF responden al requisito funcional escrito y al objetivo documental de organización del tiempo.

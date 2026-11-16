@@ -10,8 +10,8 @@ const fs = require('node:fs');
     page.on('pageerror', e => errors.push(e.message));
     page.on('response', r => { if (r.status() >= 400) badResponses.push(`${r.status()} ${r.url()}`); });
     await page.goto(process.env.APP_URL || 'http://127.0.0.1:8123/');
-    assert.match(await page.title(), /HelpyouRYC/);
-    await page.screenshot({ path: '/tmp/helpyou-home-desktop.png', fullPage: true });
+    assert.match(await page.title(), /PsicoIntegra/);
+    await page.screenshot({ path: '/tmp/psicointegra-home-desktop.png', fullPage: true });
     await page.getByRole('button', { name: 'Iniciar', exact: true }).click();
     await page.locator('#question-form').waitFor();
     await page.locator('.skip-link').focus();
@@ -21,20 +21,21 @@ const fs = require('node:fs');
     await page.getByRole('button', { name: 'Siguiente' }).click();
     await page.getByRole('alert').filter({ hasText: 'Selecciona una alternativa' }).waitFor();
     const emotionNames = /\b(?:tristeza|estrés|enojo|alegría|angustia|miedo|preocupación)\b/i;
-    assert.equal(await page.locator('[name=response]').count(), 4);
-    // Elegir a salvo p2 y f1 omitidas suma 10 respuestas, con cuatro emociones empatadas al 20 %.
+    assert.equal(await page.locator('[name=response]').count(), 5);
+    // Elegir la alternativa positiva salvo p2 y f1 omitidas suma 10 respuestas asociadas a alegría.
     for (let i = 0; i < 12; i++) {
-      assert.equal(await page.locator('[name=response]').count(), 4);
+      assert.equal(await page.locator('[name=response]').count(), 5);
+      assert.deepEqual(await page.locator('.response-level').allTextContents(), ['Muy positiva', 'Positiva', 'Neutra', 'Difícil', 'Muy difícil']);
       assert.equal(await page.locator('[name=emotion], [data-emotion]').count(), 0);
       assert.doesNotMatch(await page.locator('main').innerText(), emotionNames);
-      assert.deepEqual(await page.locator('[name=response]').evaluateAll(inputs => inputs.map(input => input.value)), ['a', 'b', 'c', 'd']);
+      assert.deepEqual(await page.locator('[name=response]').evaluateAll(inputs => inputs.map(input => input.value)), ['a', 'b', 'c', 'd', 'e']);
       if (i === 0) {
         for (const width of [360, 390, 768, 1280]) {
           await page.setViewportSize({ width, height: 844 });
           assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Cuestionario sin overflow en ${width}`);
         }
         await page.setViewportSize({ width: 390, height: 844 });
-        await page.screenshot({ path: '/tmp/helpyou-question-mobile.png', fullPage: true });
+        await page.screenshot({ path: '/tmp/psicointegra-question-mobile.png', fullPage: true });
         await page.setViewportSize({ width: 1280, height: 900 });
         await page.getByRole('button', { name: 'Esta situación no se ajusta a mí' }).click();
         assert.equal(await page.locator('#skip-question').getAttribute('aria-pressed'), 'true');
@@ -45,7 +46,7 @@ const fs = require('node:fs');
         await page.getByRole('button', { name: 'Esta situación no se ajusta a mí' }).click();
         assert.equal(await page.locator('[name=response]:checked').count(), 0);
       } else {
-        await page.locator('[name=response][value="a"]').check();
+        await page.locator(`[name=response][value="${i === 7 ? 'b' : 'a'}"]`).check();
       }
       if (i === 2) {
         await page.getByRole('button', { name: 'Anterior' }).click();
@@ -67,14 +68,14 @@ const fs = require('node:fs');
       await page.getByRole('button', { name: i === 11 ? 'Ver mis resultados' : 'Siguiente' }).click();
     }
     await page.getByRole('heading', { name: 'Un vistazo a cómo estás.' }).waitFor();
-    assert.match(await page.locator('.results-summary h2').textContent(), /misma presencia/);
+    assert.match(await page.locator('.results-summary h2').textContent(), /alegría/);
     assert.match(await page.locator('.chart-caption').textContent(), /2 preguntas omitidas/);
     assert.equal(await page.locator('.chart-center strong').textContent(), '10');
-    const expectedPercent = { tristeza: 10, estres: 20, enojo: 20, alegria: 0, angustia: 20, miedo: 10, preocupacion: 20 };
+    const expectedPercent = { tristeza: 0, estres: 0, enojo: 0, alegria: 100, angustia: 0, miedo: 0, preocupacion: 0 };
     for (const [id, percent] of Object.entries(expectedPercent)) {
       assert.equal(await page.locator(`.legend-button[data-emotion=${id}] strong`).textContent(), `${percent} %`);
     }
-    assert.equal(await page.locator('.chart-segment').count(), 6);
+    assert.equal(await page.locator('.chart-segment').count(), 1);
     assert.equal(await page.locator('[name=emotion]').count(), 0);
     assert.doesNotMatch(await page.locator('.results-layout').textContent(), /etiquetas elegidas|que elegiste/i);
     await page.getByText('Revisar mis 12 respuestas', { exact: true }).click();
@@ -82,20 +83,20 @@ const fs = require('node:fs');
     assert.doesNotMatch(await page.locator('.answer-list').textContent(), emotionNames);
     assert.match(await page.locator('.answer-list').textContent(), /Situación omitida/);
     await page.getByText('Revisar mis 12 respuestas', { exact: true }).click();
-    await page.locator('.chart-segment[data-emotion=miedo]').focus();
+    await page.locator('.chart-segment[data-emotion=alegria]').focus();
     await page.keyboard.press('Enter');
-    assert.match(await page.locator('#support-panel h2').textContent(), /^Miedo/);
+    assert.match(await page.locator('#support-panel h2').textContent(), /^Alegría/);
     assert.equal(await page.locator('.support-card').count(), 4);
     assert.doesNotMatch(await page.locator('#support-panel').textContent(), /Base documental|adaptación al organizador/i);
     await page.locator('.legend-button[data-emotion=tristeza]').click();
     assert.match(await page.locator('#support-panel h2').textContent(), /^Tristeza/);
-    await page.screenshot({ path: '/tmp/helpyou-results-desktop.png', fullPage: true });
+    await page.screenshot({ path: '/tmp/psicointegra-results-desktop.png', fullPage: true });
     for (const width of [360, 390, 768, 1280]) {
       await page.setViewportSize({ width, height: 844 });
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Resultados sin overflow en ${width}`);
     }
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.screenshot({ path: '/tmp/helpyou-results-mobile.png', fullPage: true });
+    await page.screenshot({ path: '/tmp/psicointegra-results-mobile.png', fullPage: true });
     await page.getByRole('link', { name: 'Llevarlo a mi organizador' }).click();
     await page.locator('.org-calendar').waitFor();
     assert.equal(await page.locator('.org-day').count(), 7);
@@ -126,13 +127,13 @@ const fs = require('node:fs');
       await page.setViewportSize({ width, height: 844 });
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Organizador sin overflow en ${width}`);
     }
-    await page.screenshot({ path: '/tmp/helpyou-organizer-desktop.png', fullPage: true });
+    await page.screenshot({ path: '/tmp/psicointegra-organizer-desktop.png', fullPage: true });
     const downloadPromise = page.waitForEvent('download');
     await page.getByRole('button', { name: 'Descargar PDF' }).click();
     const download = await downloadPromise;
-    assert.equal(download.suggestedFilename(), 'HelpyouRYC-semana-2026-10-26.pdf');
-    await download.saveAs('/tmp/helpyou-week-test.pdf');
-    assert.ok(fs.statSync('/tmp/helpyou-week-test.pdf').size > 1000);
+    assert.equal(download.suggestedFilename(), 'PsicoIntegra-semana-2026-10-26.pdf');
+    await download.saveAs('/tmp/psicointegra-week-test.pdf');
+    assert.ok(fs.statSync('/tmp/psicointegra-week-test.pdf').size > 1000);
     await page.getByRole('link', { name: /Volver al inicio/ }).click();
     await page.getByRole('button', { name: 'Continuar mi recorrido' }).click();
     assert.equal(await page.locator('[name=response][value="a"]').isChecked(), true);
@@ -159,7 +160,20 @@ const fs = require('node:fs');
     await page.getByRole('button', { name: 'Sobre el proyecto' }).click();
     await page.getByRole('dialog').waitFor();
     await page.keyboard.press('Escape');
+    await page.getByRole('link', { name: /Volver al inicio/ }).click();
+    await page.getByRole('button', { name: 'Continuar mi recorrido' }).click();
+    await page.getByRole('button', { name: 'Ver mis resultados' }).click();
+    page.once('dialog', d => d.accept());
+    await page.getByRole('button', { name: 'Volver a responder', exact: true }).click();
+    for (let i = 0; i < 12; i++) {
+      await page.locator('[name=response][value="c"]').check();
+      await page.getByRole('button', { name: i === 11 ? 'Ver mis resultados' : 'Siguiente' }).click();
+    }
+    assert.match(await page.locator('.results-summary h2').textContent(), /Tus respuestas son neutras/);
+    assert.match(await page.locator('.chart-caption').textContent(), /12 respuestas neutras/);
+    assert.equal(await page.locator('.chart-segment').count(), 0);
+    assert.ok(!(await page.locator('main').textContent()).includes('NaN'));
     assert.deepEqual(errors, []); assert.deepEqual(badResponses, []);
-    console.log('PASS: cuestionario completo sin etiquetas visibles, asociación automática, validación, edición, empates, omisiones, gráfico por teclado, 4 ámbitos, reinicio, organizador CRUD/semanas/privacidad/PDF, navegación y tamaños 360/390/768/1280, sin errores JS/HTTP.');
+    console.log('PASS: cuestionario completo sin etiquetas visibles, asociación automática, validación, edición, respuestas positivas y neutras, omisiones, gráfico por teclado, 4 ámbitos, reinicio, organizador CRUD/semanas/privacidad/PDF, navegación y tamaños 360/390/768/1280, sin errores JS/HTTP.');
   } finally { await browser.close(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

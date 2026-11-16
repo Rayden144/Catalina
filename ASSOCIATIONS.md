@@ -1,155 +1,159 @@
-# Propuesta de preguntas y asociaciones
+# Preguntas y asociaciones orientativas
 
-Esta es la correspondencia orientativa que utiliza la web. Las preguntas y alternativas se reformulan a partir de los temas del proyecto, no se atribuyen literalmente al PDF. La asociación no está validada como escala psicopedagógica o clínica. Puede revisarse y ajustarse con el equipo del proyecto.
+PsicoIntegra conserva los temas y las referencias documentales de las 12 preguntas. Se reformulan los enunciados para no partir únicamente de dificultades. Las cinco alternativas, ampliadas por solicitud del usuario, van de muy positiva → positiva → neutra → difícil → muy difícil. Cada pregunta incluye dos experiencias positivas y una neutra, además de dos experiencias de dificultad. Estos niveles describen experiencias; no son una escala validada ni una medida clínica. No se incorporan fuentes ni estrategias psicopedagógicas nuevas.
 
-## Cálculo
+Cada respuesta no neutra aporta un punto a su asociación orientativa, independientemente del nivel elegido. Los porcentajes se calculan únicamente sobre esas respuestas. Las neutras se cuentan y muestran por separado, sin atribuirles una emoción. Omitir también queda fuera del cálculo, pero no equivale a responder de forma neutra. Los empates se conservan.
 
-Cada alternativa válida aporta un punto a una emoción. Porcentaje = puntos de la emoción ÷ total de respuestas consideradas × 100. Omitir una situación no suma puntos. Se muestran todos los empates y no se genera una emoción dominante cuando se omite todo. Los porcentajes no indican intensidad ni probabilidades clínicas.
+Las dos opciones positivas se asocian a alegría por expresar disfrute o satisfacción. Las opciones difíciles describen desánimo, presión, irritación, anticipación de problemas, evitación o sentirse sobrepasado, según su texto. Son correspondencias editoriales revisables, no relaciones demostradas por el PDF. La distribución de opciones cambió con la retroalimentación y no está calibrada: los porcentajes no permiten comparar intensidad ni probabilidades de emociones.
 
-Las asociaciones no aparecen durante las preguntas ni junto a cada respuesta en la revisión. Se calculan localmente en JavaScript. El código fuente de una web estática se puede inspeccionar. No son datos secretos.
+## Ámbito Laboral
 
-## Criterios de la propuesta
-
-Las alternativas distinguen de forma descriptiva desánimo o pérdida de interés (tristeza), presión por demandas simultáneas (estrés), irritación o frustración (enojo), disfrute o satisfacción (alegría), sentirse sobrepasado en el momento (angustia), amenaza o evitación (miedo), y anticipación de problemas futuros (preocupación). Son criterios editoriales para esta propuesta, no definiciones clínicas extraídas del proyecto. Algunas experiencias pueden solaparse, de ahí el carácter orientativo del resultado.
-
-Las siete emociones aparecen como posibilidades en cada ámbito. Hay seis alternativas asociadas a tristeza y siete a cada una de las otras emociones, entre 48 alternativas totales. Esta distribución evita concentrar las opciones en pocas emociones, pero no constituye una calibración psicométrica ni garantiza oportunidades iguales en cada pregunta.
-
-## Ámbito laboral
-
-### L1. Al pensar en cómo terminas tu jornada laboral, ¿qué experiencia se acerca más a la tuya ahora?
+### L1. Al terminar tu jornada laboral, ¿cómo te sientes en este momento?
 
 Tema de referencia: ítem 7, página física 11.
 
-| Opción | Alternativa visible | Asociación interna |
-|---|---|---|
-| A | Siento que sigo corriendo entre tareas y me cuesta desconectarme de las exigencias del día. | Estrés |
-| B | Termino sin ánimo y me cuesta encontrar interés en lo que haré después. | Tristeza |
-| C | Disfruto lo que logré y me dan ganas de compartir algo bueno de mi jornada. | Alegría |
-| D | Lo vivido en la jornada se me hace abrumador y no sé por dónde empezar a ordenar lo que siento. | Angustia |
+| Opción | Experiencia | Alternativa visible | Asociación orientativa |
+|---|---|---|---|
+| A | Muy positiva | Disfruto mucho lo que logré y termino con ánimo para mis otras actividades. | Alegría |
+| B | Positiva | Me siento a gusto con mi jornada y con lo que pude hacer. | Alegría |
+| C | Neutra | Termino mi jornada como un día habitual, sin una sensación que destaque. | Neutra, sin asociación emocional |
+| D | Difícil | Termino con presión por los pendientes y me cuesta desconectarme. | Estrés |
+| E | Muy difícil | La jornada me sobrepasa y me cuesta ordenar lo que siento. | Angustia |
 
-### L2. Al pensar en las exigencias de tu trabajo, ¿qué se parece más a tu experiencia actual?
+### L2. ¿Cómo estás viviendo las tareas y responsabilidades de tu trabajo?
 
 Tema de referencia: ítem 8, página física 12.
 
-| Opción | Alternativa visible | Asociación interna |
-|---|---|---|
-| A | Me dan ganas de alejarme de una tarea porque temo no poder enfrentar lo que ocurra. | Miedo |
-| B | Me molesta cómo se distribuyen las tareas y me cuesta responder sin irritarme. | Enojo |
-| C | Le doy vueltas a los pendientes y a todo lo que podría salir mal más adelante. | Preocupación |
-| D | Siento presión por resolver varias cosas a la vez y me cuesta bajar el ritmo. | Estrés |
+| Opción | Experiencia | Alternativa visible | Asociación orientativa |
+|---|---|---|---|
+| A | Muy positiva | Disfruto mis tareas y me da mucha satisfacción cómo estoy respondiendo a ellas. | Alegría |
+| B | Positiva | Me siento conforme con la forma en que voy resolviendo mis tareas. | Alegría |
+| C | Neutra | Realizo mis tareas como parte de mi rutina, sin una sensación que destaque. | Neutra, sin asociación emocional |
+| D | Difícil | Me inquietan los pendientes y pienso con frecuencia en lo que podría salir mal. | Preocupación |
+| E | Muy difícil | La presión de las tareas es tanta que me cuesta detenerme incluso al terminar. | Estrés |
 
-### L3. Al recordar una situación difícil en tu trabajo, ¿qué experiencia reconoces más en este momento?
+### L3. ¿Cómo te sientes con la forma en que enfrentas las situaciones de tu trabajo?
 
 Tema de referencia: ítem 10, página física 13.
 
-| Opción | Alternativa visible | Asociación interna |
-|---|---|---|
-| A | Sigo pensando en sus consecuencias y anticipando problemas que todavía no han ocurrido. | Preocupación |
-| B | Siento satisfacción al reconocer cómo la enfrenté y lo que pude aprender. | Alegría |
-| C | La situación me sobrepasa y me cuesta poner en orden lo que estoy sintiendo. | Angustia |
-| D | Sigo dándole vueltas a lo injusto de lo ocurrido y tengo ganas de reclamar. | Enojo |
+| Opción | Experiencia | Alternativa visible | Asociación orientativa |
+|---|---|---|---|
+| A | Muy positiva | Me da mucha satisfacción cómo las enfrento y disfruto reconocer lo que aprendo. | Alegría |
+| B | Positiva | Me siento a gusto con la forma en que voy resolviendo las situaciones del trabajo. | Alegría |
+| C | Neutra | Las vivo como parte de mi día a día, sin una sensación que destaque. | Neutra, sin asociación emocional |
+| D | Difícil | Me molesta lo que ocurre y me cuesta dejar de pensar en lo injusto que me parece. | Enojo |
+| E | Muy difícil | Lo que ocurre me sobrepasa y me cuesta ordenar lo que siento. | Angustia |
 
-## Ámbito personal
+## Ámbito Personal
 
-### P1. Al mirar el tiempo que tienes para descansar y disfrutar, ¿qué se parece más a tu experiencia actual?
+### P1. ¿Cómo estás viviendo tus momentos de descanso y las actividades que disfrutas?
 
 Tema de referencia: ítem 17, página física 17.
 
-| Opción | Alternativa visible | Asociación interna |
-|---|---|---|
-| A | Me irrita que otras obligaciones ocupen el espacio que quería dedicarme. | Enojo |
-| B | Me entusiasma pensar en una actividad que disfruto y en el momento que tendré para hacerla. | Alegría |
-| C | Me desanima ver lo poco que he podido dedicar a las cosas que antes disfrutaba. | Tristeza |
-| D | Siento que debo aprovechar cada minuto y que ni al descansar logro dejar de correr. | Estrés |
+| Opción | Experiencia | Alternativa visible | Asociación orientativa |
+|---|---|---|---|
+| A | Muy positiva | Disfruto mucho mis momentos de descanso y las actividades que me gustan. | Alegría |
+| B | Positiva | Me siento a gusto con los momentos que puedo dedicar a descansar o hacer algo para mí. | Alegría |
+| C | Neutra | Tengo algunos momentos libres y los vivo como parte de mi rutina. | Neutra, sin asociación emocional |
+| D | Difícil | Me desanima tener poco tiempo para las actividades que disfruto. | Tristeza |
+| E | Muy difícil | La presión de las obligaciones es tanta que ni al descansar logro desconectarme. | Estrés |
 
-### P2. Al observar cómo tus experiencias afectan tu bienestar, ¿qué reconoces más en ti ahora?
+### P2. Al pensar en tus experiencias recientes, ¿cómo te sientes contigo en este momento?
 
 Tema de referencia: ítem 18, página física 17.
 
-| Opción | Alternativa visible | Asociación interna |
-|---|---|---|
-| A | Me siento a gusto con una experiencia reciente y disfruto recordarla. | Alegría |
-| B | Hay algo que percibo como una amenaza y me dan ganas de evitarlo. | Miedo |
-| C | Mi atención se queda en lo que podría pasar y en cómo prevenir cada posible problema. | Preocupación |
-| D | Lo que siento ahora se me hace difícil de contener y me cuesta encontrar claridad. | Angustia |
+| Opción | Experiencia | Alternativa visible | Asociación orientativa |
+|---|---|---|---|
+| A | Muy positiva | Me siento muy a gusto con lo que he vivido y disfruto recordarlo. | Alegría |
+| B | Positiva | Me siento conforme con cómo me he sentido en estos días. | Alegría |
+| C | Neutra | Mis días han sido habituales; no hay una sensación que destaque ahora. | Neutra, sin asociación emocional |
+| D | Difícil | Me inquieta lo que podría ocurrir y me cuesta dejar de anticipar problemas. | Preocupación |
+| E | Muy difícil | Lo que siento me sobrepasa y me cuesta encontrar claridad en mis actividades cotidianas. | Angustia |
 
-### P3. Al pensar en atender tus necesidades personales, ¿qué experiencia se acerca más a la tuya ahora?
+### P3. ¿Cómo te sientes con el espacio que das a tus necesidades personales?
 
 Tema de referencia: ítem 20, página física 18.
 
-| Opción | Alternativa visible | Asociación interna |
-|---|---|---|
-| A | Me siento sobrepasado/a al intentar reconocer lo que necesito y no sé cómo expresarlo. | Angustia |
-| B | Me cuesta dar un paso para atenderme porque temo enfrentar algo que me resulta amenazante. | Miedo |
-| C | Las demandas se acumulan y siento presión por atenderlas antes de poder dedicarme tiempo. | Estrés |
-| D | Me frustra que mis necesidades queden al final y reacciono con irritación cuando pasa. | Enojo |
+| Opción | Experiencia | Alternativa visible | Asociación orientativa |
+|---|---|---|---|
+| A | Muy positiva | Me da mucha satisfacción dedicarme tiempo y atender lo que necesito. | Alegría |
+| B | Positiva | Me siento a gusto con los momentos que puedo dedicar a mis necesidades. | Alegría |
+| C | Neutra | Atiendo mis necesidades como parte de mi rutina, sin una sensación que destaque. | Neutra, sin asociación emocional |
+| D | Difícil | Me frustra dejar mis necesidades para después y a veces reacciono con irritación. | Enojo |
+| E | Muy difícil | Intentar atender mis necesidades me sobrepasa y me cuesta incluso expresar lo que necesito. | Angustia |
 
-## Ámbito académico
+## Ámbito Académico
 
-### A1. Al pensar en las exigencias de tus estudios, ¿qué experiencia se parece más a la tuya en este momento?
+### A1. ¿Cómo estás viviendo tus actividades de estudio y aprendizaje?
 
 Tema de referencia: ítem 2, página física 8.
 
-| Opción | Alternativa visible | Asociación interna |
-|---|---|---|
-| A | Me siento desanimado/a y me cuesta encontrar interés para retomar lo que estoy estudiando. | Tristeza |
-| B | Siento satisfacción por lo que estoy aprendiendo y disfruto reconocer mis avances. | Alegría |
-| C | Las tareas me parecen demasiadas y siento que debo resolverlas todas al mismo tiempo. | Estrés |
-| D | Lo que tengo por delante me abruma y me cuesta ordenar lo que estoy viviendo. | Angustia |
+| Opción | Experiencia | Alternativa visible | Asociación orientativa |
+|---|---|---|---|
+| A | Muy positiva | Disfruto mucho lo que aprendo y me entusiasma reconocer mis avances. | Alegría |
+| B | Positiva | Me siento a gusto con lo que voy aprendiendo y con mis avances. | Alegría |
+| C | Neutra | Estudiar es parte de mi rutina; ahora no me genera una sensación que destaque. | Neutra, sin asociación emocional |
+| D | Difícil | Me desanima estudiar y me cuesta recuperar el interés. | Tristeza |
+| E | Muy difícil | Las actividades de estudio me abruman y me cuesta ordenar lo que tengo que hacer. | Angustia |
 
-### A2. Al intentar concentrarte en clases o al estudiar, ¿qué experiencia reconoces más en ti ahora?
+### A2. ¿Cómo te sientes al seguir las clases o concentrarte cuando estudias?
 
 Tema de referencia: ítem 3, página física 9.
 
-| Opción | Alternativa visible | Asociación interna |
-|---|---|---|
-| A | Siento tanta presión por avanzar que salto de una tarea a otra sin poder bajar el ritmo. | Estrés |
-| B | Me irritan los obstáculos o las interrupciones y me dan ganas de protestar. | Enojo |
-| C | Me cuesta acercarme a una actividad porque la evaluación me parece amenazante. | Miedo |
-| D | Me distraigo imaginando resultados desfavorables y pensando cómo evitar cada uno. | Preocupación |
+| Opción | Experiencia | Alternativa visible | Asociación orientativa |
+|---|---|---|---|
+| A | Muy positiva | Disfruto mucho seguir las clases o estudiar y me da satisfacción poder concentrarme. | Alegría |
+| B | Positiva | Me siento a gusto con la forma en que sigo las clases o me concentro al estudiar. | Alegría |
+| C | Neutra | Mi concentración es la habitual; no me genera una sensación que destaque. | Neutra, sin asociación emocional |
+| D | Difícil | Me inquietan los posibles resultados y esos pensamientos me distraen al estudiar. | Preocupación |
+| E | Muy difícil | El temor a enfrentar una evaluación es tan fuerte que evito acercarme a la actividad. | Miedo |
 
-### A3. Al mirar la organización de tus trabajos, evaluaciones y tareas, ¿qué experiencia se parece más a la tuya ahora?
+### A3. ¿Cómo te sientes con la organización de tus trabajos, evaluaciones y tareas?
 
 Tema de referencia: ítem 6, página física 11.
 
-| Opción | Alternativa visible | Asociación interna |
-|---|---|---|
-| A | Repaso una y otra vez los plazos y los problemas que podrían aparecer más adelante. | Preocupación |
-| B | Me desanima ver lo pendiente y me cuesta recuperar el interés para organizarlo. | Tristeza |
-| C | Me cuesta comenzar a ordenar una entrega porque temo enfrentar su resultado. | Miedo |
-| D | Me da satisfacción ver mis avances y me entusiasma distribuir mis próximas actividades. | Alegría |
+| Opción | Experiencia | Alternativa visible | Asociación orientativa |
+|---|---|---|---|
+| A | Muy positiva | Me da mucha satisfacción ver mis avances y me entusiasma organizar mis próximas actividades. | Alegría |
+| B | Positiva | Me siento conforme con la forma en que voy organizando mis tareas y entregas. | Alegría |
+| C | Neutra | Organizo mis tareas como parte de mi rutina, sin una sensación que destaque. | Neutra, sin asociación emocional |
+| D | Difícil | Me desanima ver lo pendiente y me cuesta empezar a organizarlo. | Tristeza |
+| E | Muy difícil | El temor al resultado de mis entregas me lleva a evitar incluso comenzar a ordenarlas. | Miedo |
 
-## Ámbito familiar
+## Ámbito Familiar
 
-### F1. Al combinar tus responsabilidades familiares con el estudio, ¿qué experiencia se acerca más a la tuya ahora?
+### F1. ¿Cómo estás viviendo la combinación de tus responsabilidades familiares y tus estudios?
 
 Tema de referencia: ítem 12, página física 14.
 
-| Opción | Alternativa visible | Asociación interna |
-|---|---|---|
-| A | Me desanima sentir que he dejado de lado actividades importantes para mí. | Tristeza |
-| B | Me quedo pensando en los compromisos futuros y en cómo podría fallar en alguno. | Preocupación |
-| C | Me molesta cómo se reparten las responsabilidades y me cuesta evitar la irritación. | Enojo |
-| D | Siento que tengo que responder a varias demandas a la vez y que el tiempo no alcanza. | Estrés |
+| Opción | Experiencia | Alternativa visible | Asociación orientativa |
+|---|---|---|---|
+| A | Muy positiva | Me da mucha satisfacción cómo combino mis responsabilidades y disfruto el espacio para ambas. | Alegría |
+| B | Positiva | Me siento conforme con la forma en que voy combinando mi vida familiar y mis estudios. | Alegría |
+| C | Neutra | Combinar ambas responsabilidades es parte de mi rutina, sin una sensación que destaque. | Neutra, sin asociación emocional |
+| D | Difícil | Me molesta cómo se reparten las responsabilidades y a veces reacciono con irritación. | Enojo |
+| E | Muy difícil | La presión de responder a la familia y al estudio es tanta que me cuesta detenerme o descansar. | Estrés |
 
-### F2. Al pensar en lo que ocurre en tu entorno familiar, ¿qué experiencia reconoces más en este momento?
+### F2. ¿Cómo te sientes al compartir momentos con tu familia?
 
 Tema de referencia: ítem 13, página física 15.
 
-| Opción | Alternativa visible | Asociación interna |
-|---|---|---|
-| A | Lo que ocurre me abruma ahora y me cuesta encontrar una forma de expresar lo que siento. | Angustia |
-| B | Un encuentro o una experiencia compartida me hace disfrutar y querer acercarme a mi familia. | Alegría |
-| C | Lo que ocurre me deja sin ánimo y siento menos interés en mis actividades habituales. | Tristeza |
-| D | Percibo una situación como amenazante y me dan ganas de evitar enfrentarla. | Miedo |
+| Opción | Experiencia | Alternativa visible | Asociación orientativa |
+|---|---|---|---|
+| A | Muy positiva | Disfruto mucho los momentos compartidos y me entusiasma acercarme a mi familia. | Alegría |
+| B | Positiva | Me siento a gusto en los momentos que comparto con mi familia. | Alegría |
+| C | Neutra | Los momentos en familia son parte de mi rutina, sin una sensación que destaque. | Neutra, sin asociación emocional |
+| D | Difícil | Lo que ocurre en mi familia me desanima y me cuesta interesarme en mis actividades. | Tristeza |
+| E | Muy difícil | Una situación familiar me resulta tan amenazante que evito enfrentarla. | Miedo |
 
-### F3. Al pensar en expresar lo que te pasa a alguien de tu familia, ¿qué experiencia se parece más a la tuya ahora?
+### F3. ¿Cómo te sientes al compartir lo que te pasa con alguien de tu familia?
 
 Tema de referencia: ítem 16, página física 16.
 
-| Opción | Alternativa visible | Asociación interna |
-|---|---|---|
-| A | Me irrita pensar que no me escuchan y siento ganas de reclamar antes de conversar. | Enojo |
-| B | Le doy vueltas a cómo responderán y a los problemas que podrían surgir después. | Preocupación |
-| C | Temo la reacción de esa persona y prefiero evitar la conversación. | Miedo |
-| D | Lo que necesito contar me sobrepasa y me cuesta ordenar mis sentimientos para expresarlos. | Angustia |
+| Opción | Experiencia | Alternativa visible | Asociación orientativa |
+|---|---|---|---|
+| A | Muy positiva | Me da mucha satisfacción poder expresarme y disfrutar de esa cercanía. | Alegría |
+| B | Positiva | Me siento a gusto al conversar sobre lo que me pasa con alguien de mi familia. | Alegría |
+| C | Neutra | Conversar sobre lo que me pasa es algo cotidiano, sin una sensación que destaque. | Neutra, sin asociación emocional |
+| D | Difícil | Me inquieta cómo responderán y me cuesta dejar de anticipar problemas antes de conversar. | Preocupación |
+| E | Muy difícil | Lo que necesito contar me sobrepasa y me cuesta ordenar mis sentimientos para expresarlo. | Angustia |

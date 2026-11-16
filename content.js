@@ -3,10 +3,10 @@
 // Es una propuesta orientativa para revisión, no una escala validada ni diagnóstico.
 // No convierte la frecuencia de los ítems originales en emociones.
 export const domains = [
-  { id: 'laboral', name: 'Laboral', short: 'El trabajo', color: '#eadbcf' },
-  { id: 'personal', name: 'Personal', short: 'Tu espacio', color: '#e0e8d4' },
-  { id: 'academico', name: 'Académico', short: 'El aprendizaje', color: '#e0e8ef' },
-  { id: 'familiar', name: 'Familiar', short: 'Los vínculos', color: '#e8e0ed' }
+  { id: 'laboral', name: 'Laboral', short: 'El trabajo', color: '#f8e9b8' },
+  { id: 'personal', name: 'Personal', short: 'Tu espacio', color: '#f5dbe6' },
+  { id: 'academico', name: 'Académico', short: 'El aprendizaje', color: '#d9edf8' },
+  { id: 'familiar', name: 'Familiar', short: 'Los vínculos', color: '#f3e1eb' }
 ];
 // Las siete etiquetas y sus colores son requisitos de diseño del usuario,
 // no categorías ni puntuaciones clínicas extraídas del documento.
@@ -22,122 +22,134 @@ export const emotions = [
 export const questions = [
   {
     id: 'l1', domain: 'laboral', page: 11, sourceItem: 7,
-    text: 'Al pensar en cómo terminas tu jornada laboral, ¿qué experiencia se acerca más a la tuya ahora?',
+    text: "Al terminar tu jornada laboral, ¿cómo te sientes en este momento?",
     options: [
-      { id: 'a', text: 'Siento que sigo corriendo entre tareas y me cuesta desconectarme de las exigencias del día.', emotion: 'estres' },
-      { id: 'b', text: 'Termino sin ánimo y me cuesta encontrar interés en lo que haré después.', emotion: 'tristeza' },
-      { id: 'c', text: 'Disfruto lo que logré y me dan ganas de compartir algo bueno de mi jornada.', emotion: 'alegria' },
-      { id: 'd', text: 'Lo vivido en la jornada se me hace abrumador y no sé por dónde empezar a ordenar lo que siento.', emotion: 'angustia' }
+      { id: 'a', level: "Muy positiva", text: "Disfruto mucho lo que logré y termino con ánimo para mis otras actividades.", emotion: 'alegria' },
+      { id: 'b', level: "Positiva", text: "Me siento a gusto con mi jornada y con lo que pude hacer.", emotion: 'alegria' },
+      { id: 'c', level: "Neutra", text: "Termino mi jornada como un día habitual, sin una sensación que destaque.", emotion: null },
+      { id: 'd', level: "Difícil", text: "Termino con presión por los pendientes y me cuesta desconectarme.", emotion: 'estres' },
+      { id: 'e', level: "Muy difícil", text: "La jornada me sobrepasa y me cuesta ordenar lo que siento.", emotion: 'angustia' }
     ]
   },
   {
     id: 'l2', domain: 'laboral', page: 12, sourceItem: 8,
-    text: 'Al pensar en las exigencias de tu trabajo, ¿qué se parece más a tu experiencia actual?',
+    text: "¿Cómo estás viviendo las tareas y responsabilidades de tu trabajo?",
     options: [
-      { id: 'a', text: 'Me dan ganas de alejarme de una tarea porque temo no poder enfrentar lo que ocurra.', emotion: 'miedo' },
-      { id: 'b', text: 'Me molesta cómo se distribuyen las tareas y me cuesta responder sin irritarme.', emotion: 'enojo' },
-      { id: 'c', text: 'Le doy vueltas a los pendientes y a todo lo que podría salir mal más adelante.', emotion: 'preocupacion' },
-      { id: 'd', text: 'Siento presión por resolver varias cosas a la vez y me cuesta bajar el ritmo.', emotion: 'estres' }
+      { id: 'a', level: "Muy positiva", text: "Disfruto mis tareas y me da mucha satisfacción cómo estoy respondiendo a ellas.", emotion: 'alegria' },
+      { id: 'b', level: "Positiva", text: "Me siento conforme con la forma en que voy resolviendo mis tareas.", emotion: 'alegria' },
+      { id: 'c', level: "Neutra", text: "Realizo mis tareas como parte de mi rutina, sin una sensación que destaque.", emotion: null },
+      { id: 'd', level: "Difícil", text: "Me inquietan los pendientes y pienso con frecuencia en lo que podría salir mal.", emotion: 'preocupacion' },
+      { id: 'e', level: "Muy difícil", text: "La presión de las tareas es tanta que me cuesta detenerme incluso al terminar.", emotion: 'estres' }
     ]
   },
   {
     id: 'l3', domain: 'laboral', page: 13, sourceItem: 10,
-    text: 'Al recordar una situación difícil en tu trabajo, ¿qué experiencia reconoces más en este momento?',
+    text: "¿Cómo te sientes con la forma en que enfrentas las situaciones de tu trabajo?",
     options: [
-      { id: 'a', text: 'Sigo pensando en sus consecuencias y anticipando problemas que todavía no han ocurrido.', emotion: 'preocupacion' },
-      { id: 'b', text: 'Siento satisfacción al reconocer cómo la enfrenté y lo que pude aprender.', emotion: 'alegria' },
-      { id: 'c', text: 'La situación me sobrepasa y me cuesta poner en orden lo que estoy sintiendo.', emotion: 'angustia' },
-      { id: 'd', text: 'Sigo dándole vueltas a lo injusto de lo ocurrido y tengo ganas de reclamar.', emotion: 'enojo' }
+      { id: 'a', level: "Muy positiva", text: "Me da mucha satisfacción cómo las enfrento y disfruto reconocer lo que aprendo.", emotion: 'alegria' },
+      { id: 'b', level: "Positiva", text: "Me siento a gusto con la forma en que voy resolviendo las situaciones del trabajo.", emotion: 'alegria' },
+      { id: 'c', level: "Neutra", text: "Las vivo como parte de mi día a día, sin una sensación que destaque.", emotion: null },
+      { id: 'd', level: "Difícil", text: "Me molesta lo que ocurre y me cuesta dejar de pensar en lo injusto que me parece.", emotion: 'enojo' },
+      { id: 'e', level: "Muy difícil", text: "Lo que ocurre me sobrepasa y me cuesta ordenar lo que siento.", emotion: 'angustia' }
     ]
   },
   {
     id: 'p1', domain: 'personal', page: 17, sourceItem: 17,
-    text: 'Al mirar el tiempo que tienes para descansar y disfrutar, ¿qué se parece más a tu experiencia actual?',
+    text: "¿Cómo estás viviendo tus momentos de descanso y las actividades que disfrutas?",
     options: [
-      { id: 'a', text: 'Me irrita que otras obligaciones ocupen el espacio que quería dedicarme.', emotion: 'enojo' },
-      { id: 'b', text: 'Me entusiasma pensar en una actividad que disfruto y en el momento que tendré para hacerla.', emotion: 'alegria' },
-      { id: 'c', text: 'Me desanima ver lo poco que he podido dedicar a las cosas que antes disfrutaba.', emotion: 'tristeza' },
-      { id: 'd', text: 'Siento que debo aprovechar cada minuto y que ni al descansar logro dejar de correr.', emotion: 'estres' }
+      { id: 'a', level: "Muy positiva", text: "Disfruto mucho mis momentos de descanso y las actividades que me gustan.", emotion: 'alegria' },
+      { id: 'b', level: "Positiva", text: "Me siento a gusto con los momentos que puedo dedicar a descansar o hacer algo para mí.", emotion: 'alegria' },
+      { id: 'c', level: "Neutra", text: "Tengo algunos momentos libres y los vivo como parte de mi rutina.", emotion: null },
+      { id: 'd', level: "Difícil", text: "Me desanima tener poco tiempo para las actividades que disfruto.", emotion: 'tristeza' },
+      { id: 'e', level: "Muy difícil", text: "La presión de las obligaciones es tanta que ni al descansar logro desconectarme.", emotion: 'estres' }
     ]
   },
   {
     id: 'p2', domain: 'personal', page: 17, sourceItem: 18,
-    text: 'Al observar cómo tus experiencias afectan tu bienestar, ¿qué reconoces más en ti ahora?',
+    text: "Al pensar en tus experiencias recientes, ¿cómo te sientes contigo en este momento?",
     options: [
-      { id: 'a', text: 'Me siento a gusto con una experiencia reciente y disfruto recordarla.', emotion: 'alegria' },
-      { id: 'b', text: 'Hay algo que percibo como una amenaza y me dan ganas de evitarlo.', emotion: 'miedo' },
-      { id: 'c', text: 'Mi atención se queda en lo que podría pasar y en cómo prevenir cada posible problema.', emotion: 'preocupacion' },
-      { id: 'd', text: 'Lo que siento ahora se me hace difícil de contener y me cuesta encontrar claridad.', emotion: 'angustia' }
+      { id: 'a', level: "Muy positiva", text: "Me siento muy a gusto con lo que he vivido y disfruto recordarlo.", emotion: 'alegria' },
+      { id: 'b', level: "Positiva", text: "Me siento conforme con cómo me he sentido en estos días.", emotion: 'alegria' },
+      { id: 'c', level: "Neutra", text: "Mis días han sido habituales; no hay una sensación que destaque ahora.", emotion: null },
+      { id: 'd', level: "Difícil", text: "Me inquieta lo que podría ocurrir y me cuesta dejar de anticipar problemas.", emotion: 'preocupacion' },
+      { id: 'e', level: "Muy difícil", text: "Lo que siento me sobrepasa y me cuesta encontrar claridad en mis actividades cotidianas.", emotion: 'angustia' }
     ]
   },
   {
     id: 'p3', domain: 'personal', page: 18, sourceItem: 20,
-    text: 'Al pensar en atender tus necesidades personales, ¿qué experiencia se acerca más a la tuya ahora?',
+    text: "¿Cómo te sientes con el espacio que das a tus necesidades personales?",
     options: [
-      { id: 'a', text: 'Me siento sobrepasado/a al intentar reconocer lo que necesito y no sé cómo expresarlo.', emotion: 'angustia' },
-      { id: 'b', text: 'Me cuesta dar un paso para atenderme porque temo enfrentar algo que me resulta amenazante.', emotion: 'miedo' },
-      { id: 'c', text: 'Las demandas se acumulan y siento presión por atenderlas antes de poder dedicarme tiempo.', emotion: 'estres' },
-      { id: 'd', text: 'Me frustra que mis necesidades queden al final y reacciono con irritación cuando pasa.', emotion: 'enojo' }
+      { id: 'a', level: "Muy positiva", text: "Me da mucha satisfacción dedicarme tiempo y atender lo que necesito.", emotion: 'alegria' },
+      { id: 'b', level: "Positiva", text: "Me siento a gusto con los momentos que puedo dedicar a mis necesidades.", emotion: 'alegria' },
+      { id: 'c', level: "Neutra", text: "Atiendo mis necesidades como parte de mi rutina, sin una sensación que destaque.", emotion: null },
+      { id: 'd', level: "Difícil", text: "Me frustra dejar mis necesidades para después y a veces reacciono con irritación.", emotion: 'enojo' },
+      { id: 'e', level: "Muy difícil", text: "Intentar atender mis necesidades me sobrepasa y me cuesta incluso expresar lo que necesito.", emotion: 'angustia' }
     ]
   },
   {
     id: 'a1', domain: 'academico', page: 8, sourceItem: 2,
-    text: 'Al pensar en las exigencias de tus estudios, ¿qué experiencia se parece más a la tuya en este momento?',
+    text: "¿Cómo estás viviendo tus actividades de estudio y aprendizaje?",
     options: [
-      { id: 'a', text: 'Me siento desanimado/a y me cuesta encontrar interés para retomar lo que estoy estudiando.', emotion: 'tristeza' },
-      { id: 'b', text: 'Siento satisfacción por lo que estoy aprendiendo y disfruto reconocer mis avances.', emotion: 'alegria' },
-      { id: 'c', text: 'Las tareas me parecen demasiadas y siento que debo resolverlas todas al mismo tiempo.', emotion: 'estres' },
-      { id: 'd', text: 'Lo que tengo por delante me abruma y me cuesta ordenar lo que estoy viviendo.', emotion: 'angustia' }
+      { id: 'a', level: "Muy positiva", text: "Disfruto mucho lo que aprendo y me entusiasma reconocer mis avances.", emotion: 'alegria' },
+      { id: 'b', level: "Positiva", text: "Me siento a gusto con lo que voy aprendiendo y con mis avances.", emotion: 'alegria' },
+      { id: 'c', level: "Neutra", text: "Estudiar es parte de mi rutina; ahora no me genera una sensación que destaque.", emotion: null },
+      { id: 'd', level: "Difícil", text: "Me desanima estudiar y me cuesta recuperar el interés.", emotion: 'tristeza' },
+      { id: 'e', level: "Muy difícil", text: "Las actividades de estudio me abruman y me cuesta ordenar lo que tengo que hacer.", emotion: 'angustia' }
     ]
   },
   {
     id: 'a2', domain: 'academico', page: 9, sourceItem: 3,
-    text: 'Al intentar concentrarte en clases o al estudiar, ¿qué experiencia reconoces más en ti ahora?',
+    text: "¿Cómo te sientes al seguir las clases o concentrarte cuando estudias?",
     options: [
-      { id: 'a', text: 'Siento tanta presión por avanzar que salto de una tarea a otra sin poder bajar el ritmo.', emotion: 'estres' },
-      { id: 'b', text: 'Me irritan los obstáculos o las interrupciones y me dan ganas de protestar.', emotion: 'enojo' },
-      { id: 'c', text: 'Me cuesta acercarme a una actividad porque la evaluación me parece amenazante.', emotion: 'miedo' },
-      { id: 'd', text: 'Me distraigo imaginando resultados desfavorables y pensando cómo evitar cada uno.', emotion: 'preocupacion' }
+      { id: 'a', level: "Muy positiva", text: "Disfruto mucho seguir las clases o estudiar y me da satisfacción poder concentrarme.", emotion: 'alegria' },
+      { id: 'b', level: "Positiva", text: "Me siento a gusto con la forma en que sigo las clases o me concentro al estudiar.", emotion: 'alegria' },
+      { id: 'c', level: "Neutra", text: "Mi concentración es la habitual; no me genera una sensación que destaque.", emotion: null },
+      { id: 'd', level: "Difícil", text: "Me inquietan los posibles resultados y esos pensamientos me distraen al estudiar.", emotion: 'preocupacion' },
+      { id: 'e', level: "Muy difícil", text: "El temor a enfrentar una evaluación es tan fuerte que evito acercarme a la actividad.", emotion: 'miedo' }
     ]
   },
   {
     id: 'a3', domain: 'academico', page: 11, sourceItem: 6,
-    text: 'Al mirar la organización de tus trabajos, evaluaciones y tareas, ¿qué experiencia se parece más a la tuya ahora?',
+    text: "¿Cómo te sientes con la organización de tus trabajos, evaluaciones y tareas?",
     options: [
-      { id: 'a', text: 'Repaso una y otra vez los plazos y los problemas que podrían aparecer más adelante.', emotion: 'preocupacion' },
-      { id: 'b', text: 'Me desanima ver lo pendiente y me cuesta recuperar el interés para organizarlo.', emotion: 'tristeza' },
-      { id: 'c', text: 'Me cuesta comenzar a ordenar una entrega porque temo enfrentar su resultado.', emotion: 'miedo' },
-      { id: 'd', text: 'Me da satisfacción ver mis avances y me entusiasma distribuir mis próximas actividades.', emotion: 'alegria' }
+      { id: 'a', level: "Muy positiva", text: "Me da mucha satisfacción ver mis avances y me entusiasma organizar mis próximas actividades.", emotion: 'alegria' },
+      { id: 'b', level: "Positiva", text: "Me siento conforme con la forma en que voy organizando mis tareas y entregas.", emotion: 'alegria' },
+      { id: 'c', level: "Neutra", text: "Organizo mis tareas como parte de mi rutina, sin una sensación que destaque.", emotion: null },
+      { id: 'd', level: "Difícil", text: "Me desanima ver lo pendiente y me cuesta empezar a organizarlo.", emotion: 'tristeza' },
+      { id: 'e', level: "Muy difícil", text: "El temor al resultado de mis entregas me lleva a evitar incluso comenzar a ordenarlas.", emotion: 'miedo' }
     ]
   },
   {
     id: 'f1', domain: 'familiar', page: 14, sourceItem: 12,
-    text: 'Al combinar tus responsabilidades familiares con el estudio, ¿qué experiencia se acerca más a la tuya ahora?',
+    text: "¿Cómo estás viviendo la combinación de tus responsabilidades familiares y tus estudios?",
     options: [
-      { id: 'a', text: 'Me desanima sentir que he dejado de lado actividades importantes para mí.', emotion: 'tristeza' },
-      { id: 'b', text: 'Me quedo pensando en los compromisos futuros y en cómo podría fallar en alguno.', emotion: 'preocupacion' },
-      { id: 'c', text: 'Me molesta cómo se reparten las responsabilidades y me cuesta evitar la irritación.', emotion: 'enojo' },
-      { id: 'd', text: 'Siento que tengo que responder a varias demandas a la vez y que el tiempo no alcanza.', emotion: 'estres' }
+      { id: 'a', level: "Muy positiva", text: "Me da mucha satisfacción cómo combino mis responsabilidades y disfruto el espacio para ambas.", emotion: 'alegria' },
+      { id: 'b', level: "Positiva", text: "Me siento conforme con la forma en que voy combinando mi vida familiar y mis estudios.", emotion: 'alegria' },
+      { id: 'c', level: "Neutra", text: "Combinar ambas responsabilidades es parte de mi rutina, sin una sensación que destaque.", emotion: null },
+      { id: 'd', level: "Difícil", text: "Me molesta cómo se reparten las responsabilidades y a veces reacciono con irritación.", emotion: 'enojo' },
+      { id: 'e', level: "Muy difícil", text: "La presión de responder a la familia y al estudio es tanta que me cuesta detenerme o descansar.", emotion: 'estres' }
     ]
   },
   {
     id: 'f2', domain: 'familiar', page: 15, sourceItem: 13,
-    text: 'Al pensar en lo que ocurre en tu entorno familiar, ¿qué experiencia reconoces más en este momento?',
+    text: "¿Cómo te sientes al compartir momentos con tu familia?",
     options: [
-      { id: 'a', text: 'Lo que ocurre me abruma ahora y me cuesta encontrar una forma de expresar lo que siento.', emotion: 'angustia' },
-      { id: 'b', text: 'Un encuentro o una experiencia compartida me hace disfrutar y querer acercarme a mi familia.', emotion: 'alegria' },
-      { id: 'c', text: 'Lo que ocurre me deja sin ánimo y siento menos interés en mis actividades habituales.', emotion: 'tristeza' },
-      { id: 'd', text: 'Percibo una situación como amenazante y me dan ganas de evitar enfrentarla.', emotion: 'miedo' }
+      { id: 'a', level: "Muy positiva", text: "Disfruto mucho los momentos compartidos y me entusiasma acercarme a mi familia.", emotion: 'alegria' },
+      { id: 'b', level: "Positiva", text: "Me siento a gusto en los momentos que comparto con mi familia.", emotion: 'alegria' },
+      { id: 'c', level: "Neutra", text: "Los momentos en familia son parte de mi rutina, sin una sensación que destaque.", emotion: null },
+      { id: 'd', level: "Difícil", text: "Lo que ocurre en mi familia me desanima y me cuesta interesarme en mis actividades.", emotion: 'tristeza' },
+      { id: 'e', level: "Muy difícil", text: "Una situación familiar me resulta tan amenazante que evito enfrentarla.", emotion: 'miedo' }
     ]
   },
   {
     id: 'f3', domain: 'familiar', page: 16, sourceItem: 16,
-    text: 'Al pensar en expresar lo que te pasa a alguien de tu familia, ¿qué experiencia se parece más a la tuya ahora?',
+    text: "¿Cómo te sientes al compartir lo que te pasa con alguien de tu familia?",
     options: [
-      { id: 'a', text: 'Me irrita pensar que no me escuchan y siento ganas de reclamar antes de conversar.', emotion: 'enojo' },
-      { id: 'b', text: 'Le doy vueltas a cómo responderán y a los problemas que podrían surgir después.', emotion: 'preocupacion' },
-      { id: 'c', text: 'Temo la reacción de esa persona y prefiero evitar la conversación.', emotion: 'miedo' },
-      { id: 'd', text: 'Lo que necesito contar me sobrepasa y me cuesta ordenar mis sentimientos para expresarlos.', emotion: 'angustia' }
+      { id: 'a', level: "Muy positiva", text: "Me da mucha satisfacción poder expresarme y disfrutar de esa cercanía.", emotion: 'alegria' },
+      { id: 'b', level: "Positiva", text: "Me siento a gusto al conversar sobre lo que me pasa con alguien de mi familia.", emotion: 'alegria' },
+      { id: 'c', level: "Neutra", text: "Conversar sobre lo que me pasa es algo cotidiano, sin una sensación que destaque.", emotion: null },
+      { id: 'd', level: "Difícil", text: "Me inquieta cómo responderán y me cuesta dejar de anticipar problemas antes de conversar.", emotion: 'preocupacion' },
+      { id: 'e', level: "Muy difícil", text: "Lo que necesito contar me sobrepasa y me cuesta ordenar mis sentimientos para expresarlo.", emotion: 'angustia' }
     ]
   }
 ];
@@ -150,14 +162,15 @@ export const supports = [
   { domain: 'familiar', title: 'Apoyo y equilibrio familiar', text: 'El proyecto considera el apoyo familiar, la expresión de emociones y preocupaciones y el equilibrio entre responsabilidades familiares, académicas y laborales.', reflection: 'Reconoce con quién puedes expresar tus preocupaciones y revisa el tiempo dedicado a las responsabilidades familiares.', source: 'pp. 15–16 y 21' }
 ];
 
-// Cada opción válida aporta un punto a su asociación interna. No es una
+// Cada opción no neutra aporta un punto a su asociación interna. No es una
 // probabilidad clínica ni una medida de intensidad. Omitir no añade puntos.
-// La exposición es de 6 o 7 opciones por emoción, no una calibración psicométrica.
+// Las respuestas neutras se registran aparte, sin atribuirles una emoción.
 export function summarizeAnswers(answers) {
   if (!answers || typeof answers !== 'object' || Array.isArray(answers)) answers = {};
   const counts = Object.fromEntries(emotions.map(e => [e.id, 0]));
   let answered = 0;
   let skipped = 0;
+  let neutral = 0;
   for (const question of questions) {
     if (!answers || !Object.hasOwn(answers, question.id)) continue;
     const choice = answers[question.id];
@@ -169,12 +182,13 @@ export function summarizeAnswers(answers) {
     const option = question.options.find(item => item.id === choice);
     if (!option) continue;
     answered += 1;
-    counts[option.emotion] += 1;
+    if (option.emotion === null) neutral += 1;
+    else counts[option.emotion] += 1;
   }
   const total = Object.values(counts).reduce((sum, n) => sum + n, 0);
   const maximum = Math.max(0, ...Object.values(counts));
   return {
-    total, answered, skipped,
+    total, answered, skipped, neutral,
     rows: emotions.map(e => ({ ...e, count: counts[e.id], percent: total ? counts[e.id] / total * 100 : 0 })),
     leaders: maximum ? emotions.filter(e => counts[e.id] === maximum) : []
   };
